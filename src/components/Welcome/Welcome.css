@@ -1,3 +1,47 @@
 .Welcome {
-    background: #1e1e1e;
+
+    background: #1e1e1e url(../../assets/images/bg-sunset.jpg) no-repeat fixed 50%;
+
+}
+
+.Dim {
+    background: rgba(0,0,0,.5);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    text-align: center;
+}
+
+.Welcome h1, .Welcome h2 {
+    margin: 0;
+    font-weight: normal;
+}
+
+.Welcome h1 {
+    font-size: 5em;
+    color: #f5a623;
+}
+
+.Welcome h2 {
+    font-size: 2em;
+    color: #fff;
+    margin-top: 20px;
+}
+
+.Button {
+    margin-top: 40px;
+    background: transparent;
+    border: 1px solid #fff;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    align-self: center;
+    cursor: pointer;
+}
+
+.Button:hover {
+    color: #1e1e1e;
+    background: #fff;
 }
