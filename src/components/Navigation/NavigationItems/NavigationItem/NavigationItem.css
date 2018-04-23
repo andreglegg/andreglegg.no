@@ -12,8 +12,14 @@
     cursor: pointer;
 }
 
-.NavigationItem a:hover,
-.NavigationItem a:active,
-.NavigationItem a.active {
-    background: #f5a623;
+.NavigationItem a:hover {
+    background: dimgray;
+}
+
+a.Active{
+    background: var(--color-highlight);
+}
+
+a.Active:hover {
+    background: var(--color-highlight-dim);
 }

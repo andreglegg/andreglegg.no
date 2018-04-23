@@ -1,3 +1,49 @@
 .Portfolio {
-    height: 1000px;
+    background:  #f7f7f7;
+    padding-top: 39px;
+    padding-bottom: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.Portfolio h2, h3 {
+    text-align: center;
+}
+
+.FilterButtons {
+
+}
+
+.FilterButtons button {
+    outline: none;
+    border: none;
+    background: var(--color-lightgrey);
+    padding: 10px 25px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+}
+
+.FilterButtons button:first-child {
+    margin-left: 1%;
+}
+
+.FilterButtons button:hover {
+    background: #e0dfdf;
+}
+.FilterButtons button.Active {
+    background: var(--color-highlight);
+    color: #fff;
+}
+
+.Items {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.Container {
+    width: var(--container-width);
+    padding: var(--container-padding);
 }

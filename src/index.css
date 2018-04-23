@@ -1,5 +1,15 @@
+:root {
+    --container-width: 1280px;
+    --container-padding: 20px 20px;
+    --color-highlight: #f5a623;
+    --color-highlight-dim: #d49121;
+    --color-darkgrey: #1e1e1e;
+    --color-lightgrey: #efefef;
+}
+
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
 }

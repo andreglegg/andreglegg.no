@@ -1,12 +1,11 @@
 import React from 'react';
 import classes from './NavigationItem.css'
-
-import { Link, Element , Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+import {Link} from 'react-scroll';
 
 const navigationItem = (props) => {
     return (
         <li className={classes.NavigationItem}>
-            <a onClick={props.to}>{props.children}</a>
+            <Link activeClass={classes.Active} to={props.to} spy={true} offset={props.offset} smooth="easeInOutQuad" duration={500} >{props.children}</Link>
         </li>
     );
 };

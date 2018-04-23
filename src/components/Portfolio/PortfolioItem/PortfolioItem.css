@@ -1,0 +1,87 @@
+.PortfolioItem {
+    display: inline-block;
+    background: #fff;
+    margin: 1%;
+    text-align: center;
+    width: 100%;
+}
+
+/*.PortfolioItem:first-child {
+    margin-left: 0;
+}*/
+
+.ThumbWrap {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.ThumbWrap:hover .OpenLink{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    -webkit-animation-duration: .3s;
+    animation-duration: .3s;
+}
+
+.OpenLink {
+    position: absolute;
+    background: rgba(245,166,35,.8);
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    font-size: 4em;
+    color: white;
+    display: none;
+}
+
+.PortfolioItem img {
+    width: 100%;
+}
+
+.Meta {
+    padding: 10px;
+}
+
+.Name {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    margin: 0 0 10px;
+}
+
+.Meta p {
+    margin: 0;
+    color: dimgray;
+    font-size: small;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-style: italic;
+}
+
+/* Ipad2 (portrait) ----------- */
+@media only screen and (min-width : 768px){
+    .PortfolioItem {
+        width: 48%;
+    }
+}
+
+
+/* Ipad2 (paysage) ----------- */
+@media only screen and (min-width : 1024px){
+    .PortfolioItem {
+        width: 31.3%;
+    }
+}
+
+/* Ordi (Petit) ----------- */
+@media only screen and (min-width : 1224px){
+    .PortfolioItem {
+        width: 23%;
+    }
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width : 1824px){
+
+}

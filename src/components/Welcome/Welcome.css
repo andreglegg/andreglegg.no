@@ -20,7 +20,7 @@
 
 .Welcome h1 {
     font-size: 5em;
-    color: #f5a623;
+    color: var(--color-highlight);
 }
 
 .Welcome h2 {
@@ -42,6 +42,6 @@
 }
 
 .Button:hover {
-    color: #1e1e1e;
+    color: var(--color-darkgrey);
     background: #fff;
 }

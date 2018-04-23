@@ -1,14 +1,22 @@
-.NavigationItems {
-    margin: 0;
-    padding: 10px 0;
+.Nav {
     width: 100%;
-    list-style: none;
     display: flex;
-    flex-flow: column;
-    align-content: center;
+    flex-flow: row;
+    justify-content: center;
     background: rgba(34,34,34,.97);
     position: fixed;
 }
+
+.NavigationItems {
+    margin: 0;
+    padding: 10px 20px;
+    width: var(--container-width);
+    list-style: none;
+    display: flex;
+    flex-flow: row;
+}
+
+
 
 @media (min-width: 500px) {
     .NavigationItems {
