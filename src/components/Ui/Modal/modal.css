@@ -1,0 +1,32 @@
+.Modal {
+    position: fixed;
+    z-index: 4;
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    left: 0;
+    top: 0;
+    box-sizing: border-box;
+    animation-duration: .3s;
+    overflow: auto;
+}
+
+.Container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.ImageWrap {
+    background: var(--color-lightgrey);
+    min-height: 580px;
+}
+.ImageWrap img {
+    width: 100%;
+}
+
+.Close {
+    float:right;
+    font-size: 3em;
+    cursor: pointer;
+}

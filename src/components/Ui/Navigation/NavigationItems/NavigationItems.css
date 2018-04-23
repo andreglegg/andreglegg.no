@@ -5,6 +5,7 @@
     justify-content: center;
     background: rgba(34,34,34,.97);
     position: fixed;
+    z-index: 3;
 }
 
 .NavigationItems {

@@ -6,13 +6,13 @@ import * as animation from 'animate.css'
 const portfolio = (props) => {
     return (
         <div className={classes.PortfolioItem}>
-            <div className={classes.ThumbWrap}>
+            <div className={classes.ThumbWrap} onClick={props.OpenModal}>
                 <div className={[classes.OpenLink, animation.animated , animation.slideInUp].join(' ')}> <MatIcon.MdLaunch/> </div>
-            <img src={props.thumb} alt={props.name}/>
+            <img src={props.data.thumb} alt={props.data.name}/>
             </div>
             <div className={classes.Meta}>
-                <span className={classes.Name}>{props.name}</span>
-                <p>{props.desc}</p>
+                <span className={classes.Name}>{props.data.name}</span>
+                <p>{props.data.tags}</p>
             </div>
         </div>
     );
