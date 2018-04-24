@@ -1,0 +1,18 @@
+.Contact {
+    background-color: #222;
+    background-image: url(../../assets/images/map-image.png);
+    background-position: 50%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: #f7f7f7;
+}
+
+
+.Container {
+    box-sizing: border-box;
+    max-width: 960px;
+    padding: var(--container-padding);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}

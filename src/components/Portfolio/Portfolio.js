@@ -81,8 +81,7 @@ class Portfolio extends Component {
                 {this.props.portfolioItems? modal : ""}
             <div className={classes.Portfolio} name="work">
                 <div className={classes.Container}>
-                    <h2>Work</h2>
-                    <h3>My Latest Work</h3>
+                    <h2>Recent Work</h2>
                     <div className={classes.FilterButtons}>
                         <button onClick={() => this.onFilterHandler("all")}
                                 className={this.state.currentCategory === "all" ? classes.Active : ' '}>All

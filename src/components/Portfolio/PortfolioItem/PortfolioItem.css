@@ -50,7 +50,7 @@
 .Name {
     display: block;
     font-weight: bold;
-    color: #333;
+    color: rgba(0,0,0,.65);
     margin: 0 0 10px;
 }
 

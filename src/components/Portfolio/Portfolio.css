@@ -8,10 +8,11 @@
 
 .Portfolio h2, h3 {
     text-align: center;
+    color: rgba(0,0,0,.65);
 }
 
 .FilterButtons {
-
+    ;
 }
 
 .FilterButtons button {
@@ -23,6 +24,7 @@
     margin-right: 10px;
     font-family: 'Lato', sans-serif;
     font-weight: bold;
+    text-transform: uppercase
 }
 
 .FilterButtons button:first-child {
@@ -46,4 +48,5 @@
 .Container {
     width: var(--container-width);
     padding: var(--container-padding);
+    margin: 0 auto;
 }
