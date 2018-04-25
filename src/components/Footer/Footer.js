@@ -9,7 +9,8 @@ const footer = (props) => {
             <div className={classes.Container}>
                 <p>Copyright &copy; André Glegg 2017</p>
                 <p>Made with React, powered by Firebase</p>
-                <span className={classes.Links}><a href="https://github.com/andreglegg" target="_blank"><FontAwesome.FaGithubSquare /></a></span>
+                <span className={classes.Links}><a
+                    href="https://github.com/andreglegg"><FontAwesome.FaGithubSquare/></a></span>
             </div>
         </div>
     );

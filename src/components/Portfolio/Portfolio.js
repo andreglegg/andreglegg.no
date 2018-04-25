@@ -49,27 +49,19 @@ class Portfolio extends Component {
 
     render() {
         let modal = null;
-        let items = "Loading portfolioItems...";
+        let items = null;
         if (this.props.portfolioItems) {
             if (this.state.modalIsOpen) {
                 modal = (<Modal isOpen={this.state.modalIsOpen} close={this.closeModalHandler}
                                 data={this.props.portfolioItems[this.state.currentModalIndex]}/>);
             }
-            items = this.props.portfolioItems
-                .map((item, i) => {
-                    //console.log(item);
-                    if (this.state.currentCategory === "all") {
-                        return (
-                            <PortfolioItem key={i} OpenModal={() => this.openModalHandler(i)} data={item}/>);
-                    }
-                    else if (item.category === this.state.currentCategory) {
-                        return (
-                            <PortfolioItem key={i} OpenModal={() => this.openModalHandler(i)} data={item}/>);
-                    }
-
-                    return null
-
-                });
+            items = Array.isArray(this.props.portfolioItems)
+                ? this.props.portfolioItems.map(
+                    (item, i) =>
+                        (this.state.currentCategory === 'all' || this.state.currentCategory === item.category) &&
+                        <PortfolioItem key={i} OpenModal={() => this.openModalHandler(i)} data={item}/>
+                )
+                : 'Loading portfolioItems...';
         }
 
 
