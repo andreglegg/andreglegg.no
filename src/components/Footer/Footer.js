@@ -3,7 +3,7 @@ import classes from './Footer.css'
 
 import * as FontAwesome from 'react-icons/lib/fa'
 
-const footer = () => {
+const footer = (props) => {
     return (
         <div className={classes.Footer}>
             <div className={classes.Container}>

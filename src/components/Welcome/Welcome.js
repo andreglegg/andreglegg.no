@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Welcome.css'
 import {Link} from 'react-scroll';
 
-const Home = (props) => {
+const Welcome = (props) => {
 
     return (
         <div className={classes.Welcome} name="top">
@@ -16,7 +16,7 @@ const Home = (props) => {
 };
 
 
-export default Home;
+export default Welcome;
 
 
 

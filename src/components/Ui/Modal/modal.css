@@ -18,8 +18,9 @@
 }
 
 .ImageWrap {
-    background: var(--color-lightgrey);
+    border-bottom: 3px solid var(--color-highlight);
     min-height: 580px;
+    padding: 3px;
 }
 .ImageWrap img {
     width: 100%;

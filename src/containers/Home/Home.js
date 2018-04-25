@@ -12,8 +12,8 @@ class Home extends Component {
             <Layout>
                 <Welcome/>
                 <Portfolio/>
-                <About name="about"/>
-                <Contact name="contact"/>
+                <About/>
+                <Contact/>
             </Layout>
         );
     }

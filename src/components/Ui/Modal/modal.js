@@ -2,6 +2,11 @@ import React from 'react';
 import * as MatIcon from 'react-icons/lib/md';
 import classes from './modal.css';
 import * as animation from 'animate.css'
+import Button from '../../Ui/Button/Button'
+
+function goToLink(link) {
+    window.location.href = link;
+}
 
 
 const modal = (props) => {
@@ -19,9 +24,11 @@ const modal = (props) => {
                 </div>
                 <p>{props.data.desc}</p>
                 <p><strong>Tags:</strong> {props.data.tags}</p>
+                <Button clicked={() => goToLink(props.data.link)}>Visit</Button>
             </div>
         </div>
     );
 };
 
 export default modal;
+//TODO: Add Link

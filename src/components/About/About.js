@@ -5,7 +5,7 @@ import {Link} from 'react-scroll';
 
 const about = (props) => {
     return (
-        <div className={classes.About} name={props.name}>
+        <div className={classes.About} name="about">
             <h2>Learn About My Journey</h2>
             <div className={classes.Container}>
                 <div className={classes.Picture}>
