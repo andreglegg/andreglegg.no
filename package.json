@@ -1,0 +1,33 @@
+{
+  "name": "andreglegg.no",
+  "version": "0.1.0",
+  "description": "The portfolio of André Glegg, rebuilt with React and Vite.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreglegg/andreglegg.no.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andreglegg/andreglegg.no/issues"
+  },
+  "homepage": "https://github.com/andreglegg/andreglegg.no#readme",
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@vitejs/plugin-react": "^5.0.4",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.11"
+  }
+}
