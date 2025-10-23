@@ -13,7 +13,7 @@ export const COLORS = {
   grass: new Color('#64a02b'),
   rock: new Color('#b2baa0'),
   moss: new Color('#8aa72d'),
-  background: new Color('#a8d8ff'),
+  background: new Color('#fcffdc'),
 } as const
 
 export const BOAT_HEIGHT_OFFSET = 0.05

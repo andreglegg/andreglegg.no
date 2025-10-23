@@ -7,7 +7,7 @@ import waterVertex from '@/scene/experience/Water/shaders/vertex.glsl'
 import waterFragment from '@/scene/experience/Water/shaders/fragment.glsl'
 
 export function createWater(registry: AnimatedMaterialRegistry) {
-  const geometry = new PlaneGeometry(256, 256, 256, 256)
+  const geometry = new PlaneGeometry(256, 256)
   const material = new CustomShaderMaterial({
     baseMaterial: MeshStandardMaterial,
     color: COLORS.waterNear.clone(),
@@ -16,10 +16,11 @@ export function createWater(registry: AnimatedMaterialRegistry) {
     uniforms: {
       uTime: { value: 0 },
       uColorFar: { value: COLORS.waterFar.clone() },
-      uTextureSize: { value: 45 },
       uWaveSpeed: { value: WAVE_SPEED },
       uWaveAmplitude: { value: WAVE_AMPLITUDE },
+      uTextureSize: { value: 45 },
     },
+    transparent: true,
   })
 
   registry.add(material, ['uTime'])

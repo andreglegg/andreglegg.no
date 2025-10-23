@@ -6,7 +6,7 @@ export function createScene() {
   const background = COLORS.background.clone()
 
   scene.background = background
-  scene.fog = new Fog(background.getHex(), 140, 260)
+  scene.fog = new Fog(background.getHex(), 120, 150)
 
   return scene
 }

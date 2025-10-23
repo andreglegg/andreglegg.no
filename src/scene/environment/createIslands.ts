@@ -1,14 +1,7 @@
 import { Group, Mesh, MeshStandardMaterial, PlaneGeometry, Vector3 } from 'three'
 import CustomShaderMaterial from 'three-custom-shader-material/vanilla'
 
-import {
-  COLORS,
-  FOAM_DEPTH,
-  TARGET_ISLAND_ID,
-  WATER_LEVEL,
-  WAVE_AMPLITUDE,
-  WAVE_SPEED,
-} from '@/scene/constants/environment'
+import { COLORS, FOAM_DEPTH, TARGET_ISLAND_ID, WATER_LEVEL, WAVE_AMPLITUDE, WAVE_SPEED } from '@/scene/constants/environment'
 import { AnimatedMaterialRegistry } from '@/scene/materials/AnimatedMaterialRegistry'
 import terrainVertex from '@/scene/experience/Terrain/shaders/vertex.glsl'
 import terrainFragment from '@/scene/experience/Terrain/shaders/fragment.glsl'
