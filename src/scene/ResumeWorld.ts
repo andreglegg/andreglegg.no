@@ -1,6 +1,7 @@
 import { Clock, Mesh, Scene } from 'three'
 import type { PerspectiveCamera, WebGLRenderer } from 'three'
 import type { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import Stats from 'stats.js'
 
 import { createCamera } from '@/scene/core/createCamera'
 import { createControls } from '@/scene/core/createControls'
@@ -24,6 +25,8 @@ export class ResumeWorld {
   private readonly animatedMaterials = new AnimatedMaterialRegistry()
   private readonly resizeObserver: ResizeObserver | null
   private fallbackResizeListenerAttached = false
+  private stats: Stats | null = null
+  private statsVisible = false
 
   private boatController: BoatController | null = null
   private animationHandle: number | null = null
@@ -39,6 +42,7 @@ export class ResumeWorld {
     addLights(this.scene)
     this.observeCanvas()
     this.handleResize()
+    window.addEventListener('keydown', this.handleKeyDown)
 
     void this.load()
   }
@@ -89,11 +93,13 @@ export class ResumeWorld {
   private animate = () => {
     const elapsed = this.clock.getElapsedTime()
 
+    this.stats?.begin()
     this.animatedMaterials.update(elapsed)
     this.boatController?.update(elapsed)
 
     this.controls.update()
     this.renderer.render(this.scene, this.camera)
+    this.stats?.end()
 
     this.animationHandle = requestAnimationFrame(this.animate)
   }
@@ -121,6 +127,8 @@ export class ResumeWorld {
       window.removeEventListener('resize', this.handleResize)
       this.fallbackResizeListenerAttached = false
     }
+    window.removeEventListener('keydown', this.handleKeyDown)
+    this.disableStats()
 
     this.controls.dispose()
     this.renderer.dispose()
@@ -138,5 +146,43 @@ export class ResumeWorld {
     })
 
     this.animatedMaterials.clear()
+  }
+
+  private readonly handleKeyDown = (event: KeyboardEvent) => {
+    if (!event.altKey || event.key.toLowerCase() !== 'f') return
+
+    event.preventDefault()
+    this.toggleStats()
+  }
+
+  private toggleStats() {
+    if (this.statsVisible) {
+      this.disableStats()
+    } else {
+      this.enableStats()
+    }
+  }
+
+  private enableStats() {
+    if (this.statsVisible) return
+
+    const stats = new Stats()
+    stats.showPanel(0)
+    stats.dom.style.position = 'fixed'
+    stats.dom.style.left = '0'
+    stats.dom.style.top = '0'
+    stats.dom.style.zIndex = '10000'
+    document.body.appendChild(stats.dom)
+
+    this.stats = stats
+    this.statsVisible = true
+  }
+
+  private disableStats() {
+    if (!this.statsVisible || !this.stats) return
+
+    this.stats.dom.remove()
+    this.stats = null
+    this.statsVisible = false
   }
 }
