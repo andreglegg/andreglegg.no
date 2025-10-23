@@ -1,30 +1,18 @@
-## The portfolio of André Glegg
+# Andre Glegg's Resume
 
-This repository contains the in-progress rebuild of [andreglegg.no](https://www.andreglegg.no) using Vite, React, and TypeScript. The focus is on fast iteration, accessible UI, and content that reflects the breadth of André's work.
+Interactive resume playground built with Vite, React, and a custom Three.js renderer. The explorable archipelago still borrows the stylized world from [thaslle/stylized-water](https://github.com/thaslle/stylized-water) (MIT), but the scene is now driven directly with raw Three.js for finer control over navigation and animation layers.
 
-### Getting started
+## Development
+- `npm install`
+- `npm run dev`
+- `npm run build`
 
-```bash
-npm install
-npm run dev
-```
+See `INSTRUCTIONS.md` for environment details and `docs/project-plan.md` for the full roadmap.
 
-The dev server opens automatically at [http://localhost:5173](http://localhost:5173).
+## Tech Stack
+- Vite + React 18 + TypeScript
+- Raw Three.js scene management (GLTFLoader, OrbitControls) orchestrated from React
+- Custom GLSL shaders (water, terrain, rocks) via `three-custom-shader-material`
 
-### Available scripts
-
-- `npm run dev` — start the Vite dev server
-- `npm run build` — type-check and create a production build
-- `npm run preview` — preview the production build locally
-
-### Project structure
-
-- `src/` — application source, organised by features (`App.tsx`, data, styles)
-- `public/` — static assets served as-is
-- `data/andre-glegg-resume.pdf` — the latest résumé; all other files in `data/` stay local
-
-### Next steps
-
-- Flesh out projects and experience with real-world content
-- Add automated accessibility and visual regression checks
-- Deploy with CI/CD (Firebase Hosting, Vercel, or similar)
+## Status
+Stylized water world integrated with no UI overlays—ideal starting point for the resume content layer, navigation, and hotspots.
