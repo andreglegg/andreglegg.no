@@ -149,7 +149,7 @@ export class ResumeWorld {
   }
 
   private readonly handleKeyDown = (event: KeyboardEvent) => {
-    if (!event.altKey || event.key.toLowerCase() !== 'f') return
+    if (!event.altKey || (event.code !== 'KeyF' && event.key.toLowerCase() !== 'f')) return
 
     event.preventDefault()
     this.toggleStats()
