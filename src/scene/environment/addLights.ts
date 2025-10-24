@@ -1,8 +1,8 @@
 import { AmbientLight, DirectionalLight, Scene } from 'three'
 
 export function addLights(scene: Scene) {
-  const ambient = new AmbientLight(0xffffff, 1)
-  const directional = new DirectionalLight(0xffffff, 2.5)
+  const ambient = new AmbientLight(0xfff4d7, 0.75)
+  const directional = new DirectionalLight(0xffdfa9, 2.4)
 
   directional.position.set(13, 5, 5)
   directional.castShadow = true

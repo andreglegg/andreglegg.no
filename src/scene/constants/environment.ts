@@ -6,14 +6,14 @@ export const WAVE_AMPLITUDE = 0.1
 export const FOAM_DEPTH = 0.05
 
 export const COLORS = {
-  waterNear: new Color('#00fccd'),
-  waterFar: new Color('#1ceeff'),
-  sand: new Color('#ff9900'),
-  underwaterBase: new Color('#118a4f'),
-  grass: new Color('#64a02b'),
-  rock: new Color('#b2baa0'),
-  moss: new Color('#8aa72d'),
-  background: new Color('#fcffdc'),
+  waterNear: new Color('#2ec5d7'),
+  waterFar: new Color('#0e79b2'),
+  sand: new Color('#f4d9a0'),
+  underwaterBase: new Color('#145a73'),
+  grass: new Color('#8bd346'),
+  rock: new Color('#c7b8a1'),
+  moss: new Color('#79a038'),
+  background: new Color('#d6f1ff'),
 } as const
 
 export const BOAT_HEIGHT_OFFSET = 0.05
