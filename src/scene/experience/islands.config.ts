@@ -25,7 +25,7 @@ export const ISLAND_CONFIGS: IslandConfig[] = [
   },
   {
     id: 'island-experience',
-    position: [-55, 0, -25],
+    position: [-72, 0, -33],
     rotation: [0, Math.PI * -0.32, 0],
     scale: [1.05, 1.05, 1.05],
     rocks: {
@@ -36,7 +36,7 @@ export const ISLAND_CONFIGS: IslandConfig[] = [
   },
   {
     id: 'island-skills',
-    position: [58, 0, -18],
+    position: [76, 0, -24],
     rotation: [0, Math.PI * 0.48, 0],
     scale: [1.1, 1.1, 1.1],
     rocks: {
@@ -47,7 +47,7 @@ export const ISLAND_CONFIGS: IslandConfig[] = [
   },
   {
     id: 'island-projects',
-    position: [-32, 0, 50],
+    position: [-43, 0, 68],
     rotation: [0, Math.PI * -0.18, 0],
     scale: [1.1, 1.1, 1.1],
     rocks: {
@@ -58,7 +58,7 @@ export const ISLAND_CONFIGS: IslandConfig[] = [
   },
   {
     id: 'island-contact',
-    position: [45, 0, 46],
+    position: [62, 0, 63],
     rotation: [0, Math.PI * 0.22, 0],
     scale: [1.05, 1.05, 1.05],
     rocks: {

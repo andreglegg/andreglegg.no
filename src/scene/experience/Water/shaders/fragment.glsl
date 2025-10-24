@@ -1,9 +1,15 @@
+#define MAX_ISLANDS 8
+
 varying vec2 csm_vUv;
+varying vec3 vWorldPosition;
 
 uniform float uTime;
 uniform vec3 uColorNear;
 uniform vec3 uColorFar;
 uniform float uTextureSize;
+uniform int uIslandCount;
+uniform vec3 uIslandCenters[MAX_ISLANDS];
+uniform float uIslandRadius;
 
 vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
 vec2 mod289(vec2 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
@@ -75,8 +81,30 @@ void main() {
     vec3 combinedEffect = min(waveEffect + foam, 1.0);
 
     // Applying a gradient based on distance
-    float vignette = length(csm_vUv - 0.5) * 1.5;
-    vec3 baseEffect = smoothstep(0.1, 0.3, vec3(vignette));
+    float vignette = 0.0;
+    float baseEffectScalar = 0.0;
+
+    if (uIslandCount == 0) {
+        vignette = length(csm_vUv - 0.5) * 1.5;
+        baseEffectScalar = smoothstep(0.1, 0.3, vignette);
+    } else {
+        float minDistance = 1e6;
+        for (int i = 0; i < MAX_ISLANDS; i++) {
+            if (i >= uIslandCount) {
+                break;
+            }
+
+            vec2 islandCenter = uIslandCenters[i].xz;
+            float distanceToIsland = length(vWorldPosition.xz - islandCenter);
+            minDistance = min(minDistance, distanceToIsland);
+        }
+
+        float normalizedDistance = clamp(minDistance / uIslandRadius, 0.0, 1.0);
+        vignette = normalizedDistance;
+        baseEffectScalar = smoothstep(0.45, 0.95, normalizedDistance);
+    }
+
+    vec3 baseEffect = vec3(baseEffectScalar);
     vec3 baseColor = mix(finalColor, uColorFar, baseEffect);
 
     combinedEffect = min(waveEffect + foam, 1.0);
@@ -90,7 +118,8 @@ void main() {
     
     // Managing the alpha based on the distance
     alpha = mix(vec3(0.2), vec3(1.0), foamEffect);
-    alpha = mix(alpha, vec3(1.0), vignette + 0.5);
+    float alphaMix = clamp(vignette + 0.5, 0.0, 1.0);
+    alpha = mix(alpha, vec3(1.0), vec3(alphaMix));
 
     // Output the final color
     csm_FragColor = vec4(finalColor, alpha);

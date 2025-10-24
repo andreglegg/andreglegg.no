@@ -1,7 +1,7 @@
 import { Group, Mesh, MeshStandardMaterial, PlaneGeometry, Vector3 } from 'three'
 import CustomShaderMaterial from 'three-custom-shader-material/vanilla'
 
-import { COLORS, FOAM_DEPTH, TARGET_ISLAND_ID, WATER_LEVEL, WAVE_AMPLITUDE, WAVE_SPEED } from '@/scene/constants/environment'
+import { COLORS, FOAM_DEPTH, TARGET_ISLAND_ID, WATER_LEVEL, WAVE_AMPLITUDE, WAVE_SPEED, WORLD_SCALE } from '@/scene/constants/environment'
 import { AnimatedMaterialRegistry } from '@/scene/materials/AnimatedMaterialRegistry'
 import terrainVertex from '@/scene/experience/Terrain/shaders/vertex.glsl'
 import terrainFragment from '@/scene/experience/Terrain/shaders/fragment.glsl'
@@ -37,7 +37,8 @@ export function createIslands({ terrainScene, rocksScene, registry }: CreateIsla
   ISLAND_CONFIGS.forEach((config) => {
     const islandGroup = new Group()
 
-    islandGroup.position.set(config.position[0], config.position[1], config.position[2])
+    const [posX, posY, posZ] = config.position
+    islandGroup.position.set(posX * WORLD_SCALE, posY, posZ * WORLD_SCALE)
 
     if (config.rotation) {
       islandGroup.rotation.set(config.rotation[0], config.rotation[1], config.rotation[2])

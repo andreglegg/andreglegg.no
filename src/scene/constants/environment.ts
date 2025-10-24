@@ -4,6 +4,7 @@ export const WATER_LEVEL = 0.9
 export const WAVE_SPEED = 1.2
 export const WAVE_AMPLITUDE = 0.1
 export const FOAM_DEPTH = 0.05
+export const WORLD_SCALE = 1.6
 
 export const COLORS = {
   waterNear: new Color('#2ec5d7'),
