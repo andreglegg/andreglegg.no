@@ -10,6 +10,7 @@ uniform float uTextureSize;
 uniform int uIslandCount;
 uniform vec3 uIslandCenters[MAX_ISLANDS];
 uniform float uIslandRadius;
+uniform vec3 uFoamColor;
 
 vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
 vec2 mod289(vec2 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
@@ -112,9 +113,10 @@ void main() {
 
     // Sample foam to maintain constant alpha of 1.0
     vec3 foamEffect = mix(foam, vec3(0.0), baseEffect);
+    vec3 foamColor = mix(uFoamColor, baseColor, baseEffect);
     
     // Set the final color
-    finalColor = (1.0 - combinedEffect) * baseColor + combinedEffect;
+    finalColor = mix(baseColor, foamColor, combinedEffect);
     
     // Managing the alpha based on the distance
     alpha = mix(vec3(0.2), vec3(1.0), foamEffect);

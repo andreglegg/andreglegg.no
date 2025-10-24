@@ -57,6 +57,7 @@ export function createIslands({ terrainScene, rocksScene, registry }: CreateIsla
         uTime: { value: 0 },
         uGrassColor: { value: COLORS.grass.clone() },
         uUnderwaterColor: { value: COLORS.underwaterBase.clone() },
+        uFoamColor: { value: COLORS.foam.clone() },
         uWaterLevel: { value: WATER_LEVEL },
         uWaveSpeed: { value: WAVE_SPEED },
         uWaveAmplitude: { value: WAVE_AMPLITUDE },
@@ -87,6 +88,7 @@ export function createIslands({ terrainScene, rocksScene, registry }: CreateIsla
         uniforms: {
           uTime: { value: 0 },
           uMossColor: { value: COLORS.moss.clone() },
+          uFoamColor: { value: COLORS.foam.clone() },
           uWaterLevel: { value: WATER_LEVEL },
           uWaveSpeed: { value: WAVE_SPEED },
           uWaveAmplitude: { value: WAVE_AMPLITUDE },

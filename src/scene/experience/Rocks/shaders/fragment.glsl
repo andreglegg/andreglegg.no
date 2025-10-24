@@ -6,6 +6,7 @@ uniform float uWaveSpeed;
 uniform float uWaveAmplitude;
 uniform float uFoamDepth;
 uniform vec3 uMossColor;
+uniform vec3 uFoamColor;
 
 void main() {
     
@@ -26,10 +27,7 @@ void main() {
     float stripe = smoothstep(currentWaterHeight + 0.01, currentWaterHeight - 0.01, csm_vPositionW.y)
                  - smoothstep(currentWaterHeight + uFoamDepth + 0.01, currentWaterHeight + uFoamDepth - 0.01, csm_vPositionW.y);
 
-    vec3 stripeColor = vec3(1.0, 1.0, 1.0); // White stripe
-
-    // Apply the foam strip to baseColor    
-    vec3 finalColor = mix(baseColor - stripe, stripeColor, stripe);
+    vec3 finalColor = mix(baseColor - stripe, uFoamColor, stripe);
     
     // Output the final color
     csm_DiffuseColor = vec4(finalColor, 1.0);

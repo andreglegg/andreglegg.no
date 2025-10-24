@@ -14,6 +14,7 @@ export const COLORS = {
   grass: new Color('#8bd346'),
   rock: new Color('#c7b8a1'),
   moss: new Color('#79a038'),
+  foam: new Color('#ffffff'),
   background: new Color('#d6f1ff'),
 } as const
 

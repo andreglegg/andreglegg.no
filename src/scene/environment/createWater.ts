@@ -31,6 +31,7 @@ export function createWater(registry: AnimatedMaterialRegistry) {
     uniforms: {
       uTime: { value: 0 },
       uColorFar: { value: COLORS.waterFar.clone() },
+      uFoamColor: { value: COLORS.foam.clone() },
       uWaveSpeed: { value: WAVE_SPEED },
       uWaveAmplitude: { value: WAVE_AMPLITUDE },
       uTextureSize: { value: 45 },
