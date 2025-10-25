@@ -102,17 +102,18 @@ void main() {
 
         float normalizedDistance = clamp(minDistance / uIslandRadius, 0.0, 1.0);
         vignette = normalizedDistance;
-        baseEffectScalar = smoothstep(0.45, 0.95, normalizedDistance);
+        float distanceFade = smoothstep(0.3, 0.85, normalizedDistance);
+        baseEffectScalar = distanceFade * distanceFade * 0.85;
     }
 
     vec3 baseEffect = vec3(baseEffectScalar);
     vec3 baseColor = mix(finalColor, uColorFar, baseEffect);
 
     combinedEffect = min(waveEffect + foam, 1.0);
-    combinedEffect = mix(combinedEffect, vec3(0.0), baseEffect);
+    combinedEffect = mix(combinedEffect, vec3(0.12), baseEffect);
 
     // Sample foam to maintain constant alpha of 1.0
-    vec3 foamEffect = mix(foam, vec3(0.0), baseEffect);
+    vec3 foamEffect = mix(foam, vec3(0.05), baseEffect);
     vec3 foamColor = mix(uFoamColor, baseColor, baseEffect);
     
     // Set the final color
