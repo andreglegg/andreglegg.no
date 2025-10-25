@@ -10,7 +10,7 @@ import { ISLAND_CONFIGS } from '@/scene/experience/islands.config'
 const MAX_ISLAND_UNIFORMS = 8 // Mirrors MAX_ISLANDS in water fragment shader
 
 export function createWater(registry: AnimatedMaterialRegistry) {
-  const waterSize = 256 * Math.max(1, WORLD_SCALE * 1.3)
+  const waterSize = 256 * Math.max(1, WORLD_SCALE * 1.8)
   const geometry = new PlaneGeometry(waterSize, waterSize)
   const islandCount = Math.min(ISLAND_CONFIGS.length, MAX_ISLAND_UNIFORMS)
   const islandCenters = Array.from({ length: MAX_ISLAND_UNIFORMS }, (_, index) => {
@@ -34,10 +34,10 @@ export function createWater(registry: AnimatedMaterialRegistry) {
       uFoamColor: { value: COLORS.foam.clone() },
       uWaveSpeed: { value: WAVE_SPEED },
       uWaveAmplitude: { value: WAVE_AMPLITUDE },
-      uTextureSize: { value: 45 },
+      uTextureSize: { value: 25 },
       uIslandCount: { value: islandCount },
       uIslandCenters: { value: islandCenters },
-      uIslandRadius: { value: 70 },
+      uIslandRadius: { value: 38 },
     },
     transparent: true,
   })

@@ -1,4 +1,4 @@
-import { Clock, Mesh, Scene } from 'three'
+import { Clock, Group, Mesh, Scene } from 'three'
 import type { PerspectiveCamera, WebGLRenderer } from 'three'
 import type { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import Stats from 'stats.js'
@@ -12,6 +12,8 @@ import { BoatController } from '@/scene/environment/BoatController'
 import { createBoat } from '@/scene/environment/createBoat'
 import { createIslands } from '@/scene/environment/createIslands'
 import { createWater } from '@/scene/environment/createWater'
+import { createWind } from '@/scene/environment/createWind'
+import { ENABLE_WIND } from '@/scene/constants/environment'
 import { loadSceneAssets } from '@/scene/loaders/loadSceneAssets'
 import { AnimatedMaterialRegistry } from '@/scene/materials/AnimatedMaterialRegistry'
 
@@ -29,6 +31,8 @@ export class ResumeWorld {
   private statsVisible = false
 
   private boatController: BoatController | null = null
+  private windGroup: Group | null = null
+  private windEnabled = ENABLE_WIND
   private animationHandle: number | null = null
 
   constructor(canvas: HTMLCanvasElement) {
@@ -69,6 +73,13 @@ export class ResumeWorld {
         registry: this.animatedMaterials,
       })
       islands.forEach((group) => this.scene.add(group))
+
+      if (ENABLE_WIND && !this.windGroup) {
+        const wind = createWind(this.animatedMaterials)
+        wind.visible = this.windEnabled
+        this.windGroup = wind
+        this.scene.add(wind)
+      }
 
       this.boatController = createBoat(assets.boat)
       this.scene.add(this.boatController.object)
@@ -146,13 +157,20 @@ export class ResumeWorld {
     })
 
     this.animatedMaterials.clear()
+    this.windGroup = null
   }
 
   private readonly handleKeyDown = (event: KeyboardEvent) => {
-    if (!event.altKey || (event.code !== 'KeyF' && event.key.toLowerCase() !== 'f')) return
+    if (!event.altKey) return
 
-    event.preventDefault()
-    this.toggleStats()
+    const key = event.key.toLowerCase()
+    if (key === 'f') {
+      event.preventDefault()
+      this.toggleStats()
+    } else if (key === 'w') {
+      event.preventDefault()
+      this.toggleWind()
+    }
   }
 
   private toggleStats() {
@@ -184,5 +202,22 @@ export class ResumeWorld {
     this.stats.dom.remove()
     this.stats = null
     this.statsVisible = false
+  }
+
+  private toggleWind() {
+    this.setWindEnabled(!this.windEnabled)
+  }
+
+  setWindEnabled(enabled: boolean) {
+    this.windEnabled = enabled
+    if (this.windGroup) {
+      this.windGroup.visible = enabled
+    } else if (enabled && ENABLE_WIND) {
+      // If wind was not created yet (e.g. toggled before load), create it once assets are ready
+      const wind = createWind(this.animatedMaterials)
+      wind.visible = true
+      this.windGroup = wind
+      this.scene.add(wind)
+    }
   }
 }

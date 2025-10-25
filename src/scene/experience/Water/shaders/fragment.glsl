@@ -57,7 +57,7 @@ void main() {
     float textureSize = 100.0 - uTextureSize;
 
     // Generate noise for the base texture
-    float noiseBase = snoise(csm_vUv * (textureSize * 2.8) + sin(uTime * 0.3));
+    float noiseBase = snoise(csm_vUv * (textureSize * 4.2) + sin(uTime * 0.3));
     noiseBase = noiseBase * 0.5 + 0.5;
     vec3 colorBase = vec3(noiseBase);
 
@@ -66,7 +66,7 @@ void main() {
     foam = step(0.5, foam);  // binary step to create foam effect
 
     // Generate additional noise for waves
-    float noiseWaves = snoise(csm_vUv * textureSize + sin(uTime * -0.1));
+    float noiseWaves = snoise(csm_vUv * textureSize * 1.5 + sin(uTime * -0.1));
     noiseWaves = noiseWaves * 0.5 + 0.5;
     vec3 colorWaves = vec3(noiseWaves);
 
@@ -102,19 +102,20 @@ void main() {
 
         float normalizedDistance = clamp(minDistance / uIslandRadius, 0.0, 1.0);
         vignette = normalizedDistance;
-        float distanceFade = smoothstep(0.3, 0.85, normalizedDistance);
-        baseEffectScalar = distanceFade * distanceFade * 0.85;
+        float distanceFade = smoothstep(0.18, 0.95, normalizedDistance);
+        baseEffectScalar = mix(0.25, 1.0, distanceFade * distanceFade);
     }
 
     vec3 baseEffect = vec3(baseEffectScalar);
     vec3 baseColor = mix(finalColor, uColorFar, baseEffect);
 
     combinedEffect = min(waveEffect + foam, 1.0);
-    combinedEffect = mix(combinedEffect, vec3(0.12), baseEffect);
+    float textureAttenuation = mix(1.0, 0.9, baseEffectScalar);
+    combinedEffect *= textureAttenuation;
 
     // Sample foam to maintain constant alpha of 1.0
-    vec3 foamEffect = mix(foam, vec3(0.05), baseEffect);
-    vec3 foamColor = mix(uFoamColor, baseColor, baseEffect);
+    vec3 foamEffect = mix(foam, vec3(0.12), baseEffect);
+    vec3 foamColor = mix(vec3(1.0), baseColor, baseEffect);
     
     // Set the final color
     finalColor = mix(baseColor, foamColor, combinedEffect);

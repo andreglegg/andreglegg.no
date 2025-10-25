@@ -4,9 +4,11 @@ export const WATER_LEVEL = 0.9
 export const WAVE_SPEED = 1.2
 export const WAVE_AMPLITUDE = 0.1
 export const FOAM_DEPTH = 0.05
-export const WORLD_SCALE = 1.6
-export const FOG_NEAR = 120 * WORLD_SCALE
-export const FOG_FAR = 150 * WORLD_SCALE
+export const WORLD_SCALE = 2
+export const FOG_NEAR = 130 * WORLD_SCALE
+export const FOG_FAR = 220 * WORLD_SCALE
+
+export const ENABLE_WIND = true
 
 export const COLORS = {
   waterNear: new Color('#2ec5d7'),
@@ -14,9 +16,10 @@ export const COLORS = {
   sand: new Color('#f4d9a0'),
   underwaterBase: new Color('#145a73'),
   grass: new Color('#8bd346'),
-  rock: new Color('#c7b8a1'),
+  rock: new Color('#c6c5c3'),
   moss: new Color('#79a038'),
   foam: new Color('#ffffff'),
+  wind: new Color('#fdfdfd'),
   background: new Color('#d6f1ff'),
 } as const
 
