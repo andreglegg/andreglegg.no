@@ -1,3 +1,3 @@
-##The portfolio of André Glegg
+## The portfolio of André Glegg
 
-Made with React and hosted on firebase at www.andreglegg.no
+Temporary placeholder page for andreglegg.no while the full portfolio is being rebuilt.

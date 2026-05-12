@@ -7,13 +7,24 @@
     --color-lightgrey: #efefef;
 }
 
+* {
+    box-sizing: border-box;
+}
 
 body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
+    background: #f4f1e8;
+    color: #18201f;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
 button:hover, a:hover {
     transition: .4s;
+}
+
+#root {
+    min-height: 100vh;
 }

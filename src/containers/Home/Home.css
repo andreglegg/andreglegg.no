@@ -1,0 +1,511 @@
+.Home {
+    min-height: 100vh;
+    color: #18201f;
+    background: #f4f1e8;
+    font-family: 'Lato', 'Roboto', sans-serif;
+}
+
+.Home a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.Hero {
+    position: relative;
+    min-height: 92vh;
+    overflow: hidden;
+    background: #f4f1e8;
+    border-bottom: 1px solid rgba(24, 32, 31, 0.1);
+}
+
+.Hero:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        linear-gradient(90deg, rgba(244, 241, 232, 0.98) 0%, rgba(244, 241, 232, 0.88) 43%, rgba(244, 241, 232, 0.18) 100%),
+        radial-gradient(circle at 22% 52%, rgba(255, 253, 247, 0.88) 0%, rgba(255, 253, 247, 0.36) 42%, rgba(255, 253, 247, 0) 70%);
+    pointer-events: none;
+}
+
+.HeroWash {
+    position: absolute;
+    inset: auto 0 0 0;
+    z-index: 1;
+    height: 28%;
+    background: linear-gradient(180deg, rgba(244, 241, 232, 0) 0%, #f4f1e8 100%);
+    pointer-events: none;
+}
+
+.SceneCanvas {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.HeroContent {
+    position: relative;
+    z-index: 2;
+    min-height: 92vh;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 76px 28px 88px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.StatusLine {
+    width: fit-content;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border: 1px solid rgba(24, 32, 31, 0.14);
+    border-radius: 999px;
+    background: rgba(255, 253, 247, 0.76);
+    color: #44504c;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.StatusDot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #0a7e74;
+    box-shadow: 0 0 0 5px rgba(10, 126, 116, 0.12);
+}
+
+.Hero h1 {
+    max-width: 780px;
+    margin: 24px 0 18px;
+    color: #121817;
+    font-size: 76px;
+    line-height: 0.98;
+    letter-spacing: 0;
+}
+
+.Lead {
+    max-width: 690px;
+    margin: 0;
+    color: #35413d;
+    font-size: 21px;
+    line-height: 1.55;
+}
+
+.HeroActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 34px;
+}
+
+.HeroActions a,
+.ProjectLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 46px;
+    padding: 0 18px;
+    border-radius: 8px;
+    border: 1px solid rgba(24, 32, 31, 0.16);
+    background: #18201f;
+    color: #fffdf7;
+    font-weight: 700;
+}
+
+.HeroActions a:nth-child(2),
+.HeroActions a:nth-child(3) {
+    background: rgba(255, 253, 247, 0.78);
+    color: #18201f;
+}
+
+.HeroActions a:hover,
+.ProjectLink:hover {
+    transform: translateY(-1px);
+    border-color: rgba(10, 126, 116, 0.42);
+}
+
+.Section {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 74px 28px 58px;
+}
+
+.SectionIntro {
+    display: grid;
+    grid-template-columns: 112px minmax(0, 780px);
+    gap: 26px;
+    align-items: center;
+}
+
+.Portrait {
+    width: 112px;
+    height: 112px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid rgba(24, 32, 31, 0.12);
+    background: #fffdf7;
+}
+
+.Eyebrow {
+    margin: 0 0 10px;
+    color: #0a7e74;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.SectionIntro h2,
+.LastCoil h2 {
+    margin: 0;
+    color: #121817;
+    font-size: 40px;
+    line-height: 1.08;
+    letter-spacing: 0;
+}
+
+.SectionIntro p,
+.LastCoilCopy p,
+.FocusItem p,
+.Timeline p {
+    color: #46524e;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.SectionIntro p:last-child {
+    max-width: 820px;
+    margin: 18px 0 0;
+}
+
+.FocusGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 38px;
+}
+
+.FocusItem {
+    padding: 22px;
+    border: 1px solid rgba(24, 32, 31, 0.12);
+    border-radius: 8px;
+    background: rgba(255, 253, 247, 0.72);
+}
+
+.FocusIcon {
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: #e1f0ed;
+    color: #0a7e74;
+    font-size: 18px;
+}
+
+.FocusItem:nth-child(2) .FocusIcon {
+    background: #f7e5df;
+    color: #d2442f;
+}
+
+.FocusItem:nth-child(3) .FocusIcon {
+    background: #f5eacb;
+    color: #8a6214;
+}
+
+.FocusItem h3 {
+    margin: 18px 0 8px;
+    color: #18201f;
+    font-size: 19px;
+}
+
+.FocusItem p {
+    margin: 0;
+}
+
+.Timeline {
+    margin-top: 34px;
+    padding-left: 22px;
+    border-left: 2px solid rgba(10, 126, 116, 0.28);
+}
+
+.Timeline p {
+    position: relative;
+    margin: 0 0 16px;
+}
+
+.Timeline p:before {
+    content: '';
+    position: absolute;
+    left: -29px;
+    top: 9px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #0a7e74;
+}
+
+.StoreLinks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.StoreLinks .ProjectLink:nth-child(2) {
+    background: #18201f;
+    color: #fffdf7;
+}
+
+.LastCoil {
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(320px, 0.74fr);
+    gap: 42px;
+    align-items: center;
+    max-width: 1180px;
+    margin: 0 auto 36px;
+    padding: 64px 28px;
+    border-top: 1px solid rgba(24, 32, 31, 0.1);
+    border-bottom: 1px solid rgba(24, 32, 31, 0.1);
+}
+
+.LastCoilTitle {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.LastCoilTitle img {
+    width: 72px;
+    height: 72px;
+    border-radius: 8px;
+    box-shadow: 0 20px 50px rgba(24, 32, 31, 0.16);
+}
+
+.LastCoilTitle p {
+    margin: 7px 0 0;
+    color: #65706c;
+}
+
+.TagList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 24px 0 28px;
+}
+
+.TagList span {
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: rgba(255, 253, 247, 0.82);
+    border: 1px solid rgba(24, 32, 31, 0.1);
+    color: #3c4642;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.ProjectLink {
+    width: fit-content;
+    background: #0a7e74;
+}
+
+.DeviceFrame {
+    position: relative;
+    padding: 10px;
+    border-radius: 8px;
+    background: #121817;
+    box-shadow: 0 26px 70px rgba(24, 32, 31, 0.22);
+    transform: perspective(1100px) rotateY(-7deg) rotateX(4deg);
+}
+
+.DeviceFrame:before {
+    content: '';
+    position: absolute;
+    inset: -18px;
+    z-index: -1;
+    border: 1px solid rgba(10, 126, 116, 0.2);
+    border-radius: 8px;
+    transform: translate3d(18px, 16px, -40px);
+}
+
+.DeviceFrame img {
+    display: block;
+    width: 100%;
+    border-radius: 6px;
+}
+
+.EndlessDescent {
+    display: grid;
+    grid-template-columns: minmax(0, 0.84fr) minmax(280px, 0.58fr);
+    gap: 34px;
+    align-items: center;
+    max-width: 1180px;
+    margin: 0 auto 34px;
+    padding: 34px 28px 64px;
+}
+
+.EndlessMedia {
+    overflow: hidden;
+    border-radius: 8px;
+    background: #121817;
+    box-shadow: 0 24px 68px rgba(24, 32, 31, 0.2);
+}
+
+.EndlessMedia img {
+    display: block;
+    width: 100%;
+}
+
+.EndlessCopy {
+    padding: 26px 0;
+}
+
+.EndlessLogo {
+    display: block;
+    width: min(330px, 100%);
+    margin: 4px 0 18px;
+}
+
+.EndlessCopy p {
+    color: #46524e;
+    font-size: 16px;
+    line-height: 1.65;
+}
+
+.Footer {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 24px 28px 44px;
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    color: #65706c;
+    font-size: 14px;
+}
+
+.Footer div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.Footer a {
+    color: #18201f;
+    font-weight: 700;
+}
+
+@media (max-width: 900px) {
+    .Hero h1 {
+        font-size: 56px;
+    }
+
+    .Lead {
+        font-size: 18px;
+    }
+
+    .SectionIntro,
+    .LastCoil,
+    .EndlessDescent {
+        grid-template-columns: 1fr;
+    }
+
+    .FocusGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .DeviceFrame {
+        max-width: 580px;
+        transform: none;
+    }
+}
+
+@media (max-width: 560px) {
+    .Hero,
+    .HeroContent {
+        min-height: 84vh;
+    }
+
+    .Hero:before {
+        background:
+            linear-gradient(90deg, rgba(244, 241, 232, 0.96) 0%, rgba(244, 241, 232, 0.84) 72%, rgba(244, 241, 232, 0.52) 100%),
+            radial-gradient(circle at 35% 48%, rgba(255, 253, 247, 0.88) 0%, rgba(255, 253, 247, 0.52) 48%, rgba(255, 253, 247, 0) 76%);
+    }
+
+    .SceneCanvas {
+        opacity: 0.62;
+    }
+
+    .HeroContent {
+        padding: 48px 20px 60px;
+    }
+
+    .Hero h1 {
+        font-size: 42px;
+    }
+
+    .Lead {
+        width: calc(100vw - 40px);
+        max-width: 100%;
+    }
+
+    .HeroActions a {
+        width: 100%;
+    }
+
+    .SectionIntro > div {
+        min-width: 0;
+    }
+
+    .Section,
+    .LastCoil,
+    .EndlessDescent,
+    .Footer {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .SectionIntro {
+        grid-template-columns: 74px 1fr;
+        gap: 16px;
+    }
+
+    .Portrait {
+        width: 74px;
+        height: 74px;
+    }
+
+    .SectionIntro h2,
+    .LastCoil h2 {
+        font-size: 28px;
+    }
+
+    .LastCoilTitle {
+        align-items: flex-start;
+    }
+
+    .LastCoilTitle img {
+        width: 56px;
+        height: 56px;
+    }
+
+    .StoreLinks .ProjectLink {
+        width: 100%;
+    }
+
+    .EndlessDescent {
+        padding-top: 20px;
+    }
+
+    .Footer {
+        flex-direction: column;
+    }
+}
