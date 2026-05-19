@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+  xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
+>
+  <url>
+    <loc>https://endlessdescent.andreglegg.no/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://endlessdescent.andreglegg.no/endless-descent/og-image.jpg</image:loc>
+      <image:title>Endless Descent iOS arcade game key art</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://endlessdescent.andreglegg.no/endless-descent/screenshots/endless-descent-ios-descend-into-chaos.jpg</image:loc>
+      <image:title>Endless Descent iPhone screenshot: Descend into chaos</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://endlessdescent.andreglegg.no/endless-descent/screenshots/endless-descent-ios-master-wall-kicks.jpg</image:loc>
+      <image:title>Endless Descent iPhone screenshot: Master wall kicks</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://endlessdescent.andreglegg.no/endless-descent/screenshots/endless-descent-ios-dodge-deadly-traps.jpg</image:loc>
+      <image:title>Endless Descent iPhone screenshot: Dodge deadly traps</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://endlessdescent.andreglegg.no/endless-descent/screenshots/endless-descent-ios-chase-coins-build-combos.jpg</image:loc>
+      <image:title>Endless Descent iPhone screenshot: Chase coins</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://endlessdescent.andreglegg.no/endless-descent/screenshots/endless-descent-ios-climb-the-leaderboards.jpg</image:loc>
+      <image:title>Endless Descent iPhone screenshot: Climb leaderboards</image:title>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://endlessdescent.andreglegg.no/endless-descent/endless-descent-gameplay-preview-poster.jpg</video:thumbnail_loc>
+      <video:title>Endless Descent gameplay preview</video:title>
+      <video:description>A 30-second iPhone gameplay preview showing wall kicks, traps, coins, and endless tower descent.</video:description>
+      <video:content_loc>https://endlessdescent.andreglegg.no/endless-descent/endless-descent-gameplay-preview.mp4</video:content_loc>
+      <video:duration>29</video:duration>
+      <video:publication_date>2026-05-19T00:00:00+02:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://endlessdescent.andreglegg.no/privacy/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://endlessdescent.andreglegg.no/terms/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://endlessdescent.andreglegg.no/delete/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+</urlset>

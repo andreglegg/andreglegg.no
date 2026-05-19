@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Delete my data &middot; Endless Descent</title>
+    <meta name="description" content="Request deletion of your Endless Descent account and game data.">
+    <meta name="robots" content="noindex, follow">
+    <meta name="theme-color" content="#05070a">
+    <link rel="canonical" href="https://endlessdescent.andreglegg.no/delete/">
+    <link rel="stylesheet" href="/docs.css">
+    <style>
+      .delete-form {
+        margin: 0 0 24px;
+        padding: 22px 22px 8px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: var(--card);
+      }
+      .delete-form .row {
+        margin-bottom: 18px;
+      }
+      .delete-form label {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        color: var(--ink);
+      }
+      .delete-form .hint {
+        margin-top: 4px;
+        font-size: 0.78rem;
+        color: var(--dim);
+      }
+      .delete-form input[type="text"],
+      .delete-form textarea {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        background: rgba(0, 0, 0, 0.35);
+        color: var(--ink);
+        font: inherit;
+        font-size: 0.95rem;
+        line-height: 1.45;
+      }
+      .delete-form input[type="text"]:focus,
+      .delete-form textarea:focus {
+        outline: none;
+        border-color: var(--gold);
+        box-shadow: 0 0 0 3px rgba(255, 200, 87, 0.18);
+      }
+      .delete-form textarea {
+        min-height: 88px;
+        resize: vertical;
+      }
+      .radio-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .radio-group label {
+        margin: 0;
+        padding: 8px 14px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0.25);
+        transition: border-color 0.15s, color 0.15s, background 0.15s;
+      }
+      .radio-group input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+      .radio-group input[type="radio"]:checked + span {
+        color: var(--gold);
+      }
+      .radio-group label:has(input:checked) {
+        border-color: rgba(255, 200, 87, 0.7);
+        background: rgba(255, 200, 87, 0.06);
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        margin: 8px 0 24px;
+      }
+      .btn {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 18px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font: inherit;
+        font-size: 0.92rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+        text-decoration: none;
+        transition: transform 0.12s, filter 0.15s, background 0.15s;
+      }
+      .btn--primary {
+        color: #1b1204;
+        background: linear-gradient(180deg, #ffc857, #ff9b2f);
+        border-color: rgba(255, 200, 87, 0.8);
+      }
+      .btn--ghost {
+        color: var(--ink);
+        background: rgba(255, 246, 221, 0.06);
+        border-color: var(--line);
+      }
+      .btn:hover { transform: translateY(-1px); filter: brightness(1.05); }
+      .btn:active { transform: translateY(0); }
+      .copied {
+        font-size: 0.82rem;
+        color: var(--gold);
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+      .copied.show { opacity: 1; }
+      .fallback {
+        margin: 0;
+        font-size: 0.88rem;
+        color: var(--muted);
+      }
+      .fallback code {
+        padding: 2px 6px;
+        border-radius: 6px;
+        background: rgba(255, 246, 221, 0.08);
+        color: var(--ink);
+        font-size: 0.92em;
+      }
+      .preview {
+        margin: 6px 0 24px;
+        padding: 16px 18px;
+        border: 1px dashed var(--line);
+        border-radius: 10px;
+        background: rgba(0, 0, 0, 0.2);
+      }
+      .preview h3 {
+        margin: 0 0 6px;
+        font-size: 0.78rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+      .preview pre {
+        margin: 0;
+        font-family: ui-monospace, "SF Mono", Menlo, monospace;
+        font-size: 0.82rem;
+        color: rgba(255, 246, 221, 0.78);
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="page-header">
+      <a class="home" href="/">
+        <img src="/assets/logo.webp" alt="Endless Descent">
+      </a>
+      <nav>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="/delete/" aria-current="page">Delete data</a>
+      </nav>
+    </header>
+
+    <main class="doc">
+      <h1>Delete my data</h1>
+      <p class="meta">Last updated: 13 May 2026</p>
+
+      <p>
+        Use this page to request deletion of your <strong>Endless Descent</strong>
+        account and saved game data. Fill in the form, tap
+        <strong>Open my email app</strong>, and send the pre-filled message from
+        the email address you want us to recognize as yours.
+      </p>
+
+      <div class="callout">
+        <p>
+          We will confirm receipt and, after any required identity check, delete
+          or anonymize your data within <strong>30 days</strong>. Records we are
+          legally required to keep (for example, in-app purchase receipts for tax
+          purposes) will be retained for the legally required period and then
+          removed. Full details are in the
+          <a href="/privacy/#deletion">Privacy Policy</a>.
+        </p>
+      </div>
+
+      <form class="delete-form" id="deleteForm" novalidate>
+        <div class="row">
+          <label for="userid">Player ID</label>
+          <input
+            id="userid"
+            name="userid"
+            type="text"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="e.g. 1ab23c45-d6e7-..."
+            required
+          >
+          <p class="hint">
+            You can find this in <em>Settings &rarr; Account</em> inside the Game.
+            If you opened this page from inside the Game, it&rsquo;s already
+            filled in.
+          </p>
+        </div>
+
+        <div class="row">
+          <label>Platform</label>
+          <div class="radio-group" role="radiogroup" aria-label="Platform">
+            <label>
+              <input type="radio" name="platform" value="iOS">
+              <span>iOS</span>
+            </label>
+            <label>
+              <input type="radio" name="platform" value="Android">
+              <span>Android</span>
+            </label>
+            <label>
+              <input type="radio" name="platform" value="Other">
+              <span>Other / not sure</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <label for="displayname">Display name <span class="hint" style="font-weight:400">(optional)</span></label>
+          <input
+            id="displayname"
+            name="displayname"
+            type="text"
+            autocomplete="off"
+            placeholder="The name shown on leaderboards"
+          >
+        </div>
+
+        <div class="row">
+          <label for="notes">Notes <span class="hint" style="font-weight:400">(optional)</span></label>
+          <textarea
+            id="notes"
+            name="notes"
+            placeholder="Anything else we should know? For example, a purchase you can&rsquo;t recover, a secondary email, or an old player ID."
+          ></textarea>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="btn btn--primary">Open my email app</button>
+          <button type="button" class="btn btn--ghost" id="copyEmail">Copy email address</button>
+          <span class="copied" id="copied">Copied</span>
+        </div>
+
+        <p class="fallback">
+          Mail app didn&rsquo;t open? Email
+          <a href="mailto:andreglegg@me.com">andreglegg@me.com</a> from the
+          account you want deleted, with the subject
+          &ldquo;<strong>Delete my Endless Descent data</strong>&rdquo;
+          and include your Player ID.
+        </p>
+      </form>
+
+      <div class="preview" aria-live="polite">
+        <h3>Message preview</h3>
+        <pre id="preview">Fill in the form above to preview your email.</pre>
+      </div>
+
+      <h2>What gets deleted</h2>
+      <ul>
+        <li>Your account record, save progress, settings, and unlocks.</li>
+        <li>Gameplay events and crash records associated with your Player ID.</li>
+        <li>Support correspondence on request, where not needed for an ongoing matter.</li>
+      </ul>
+
+      <h2>What we may keep</h2>
+      <ul>
+        <li>
+          <strong>Purchase records</strong> required by tax and consumer protection
+          law (typically several years in Norway and the EU).
+        </li>
+        <li>
+          Anonymized analytics that can no longer be linked back to you.
+        </li>
+        <li>
+          Records of the deletion request itself, so we can show we honored it.
+        </li>
+      </ul>
+
+      <h2>Platform-managed data</h2>
+      <p>
+        Game Center, Google Play Games, and similar platform accounts are managed
+        by Apple or Google. You can delete them through their settings:
+      </p>
+      <ul>
+        <li>
+          Apple ID and Game Center data:
+          <a href="https://privacy.apple.com/" rel="noopener">privacy.apple.com</a>
+        </li>
+        <li>
+          Google Account and Play Games data:
+          <a href="https://myaccount.google.com/" rel="noopener">myaccount.google.com</a>
+        </li>
+      </ul>
+
+      <p>
+        Questions? Email
+        <a href="mailto:andreglegg@me.com">andreglegg@me.com</a>.
+      </p>
+    </main>
+
+    <footer class="page-footer">
+      <nav>
+        <a href="/">Home</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="/delete/">Delete data</a>
+      </nav>
+      &copy; 2026 Andre Glegg
+    </footer>
+
+    <script>
+      (function () {
+        var EMAIL = 'andreglegg@me.com';
+        var SUBJECT = 'Delete my Endless Descent data';
+
+        var form = document.getElementById('deleteForm');
+        var idInput = document.getElementById('userid');
+        var nameInput = document.getElementById('displayname');
+        var notesInput = document.getElementById('notes');
+        var preview = document.getElementById('preview');
+        var copyBtn = document.getElementById('copyEmail');
+        var copied = document.getElementById('copied');
+
+        // Pre-fill from ?userid= (or aliases) in the URL
+        var params = new URLSearchParams(window.location.search);
+        var preset =
+          params.get('userid') ||
+          params.get('user_id') ||
+          params.get('uid') ||
+          params.get('playerid') ||
+          params.get('player_id') ||
+          '';
+        if (preset) idInput.value = preset.trim();
+
+        var presetPlatform = (params.get('platform') || '').toLowerCase();
+        if (presetPlatform) {
+          var match = document.querySelector(
+            'input[name="platform"][value="' +
+              (presetPlatform === 'ios'
+                ? 'iOS'
+                : presetPlatform === 'android'
+                ? 'Android'
+                : 'Other') +
+              '"]'
+          );
+          if (match) match.checked = true;
+        }
+
+        function selectedPlatform() {
+          var r = document.querySelector('input[name="platform"]:checked');
+          return r ? r.value : '';
+        }
+
+        function buildBody() {
+          var id = idInput.value.trim();
+          var platform = selectedPlatform();
+          var name = nameInput.value.trim();
+          var notes = notesInput.value.trim();
+
+          var lines = [
+            'Hi,',
+            '',
+            'Please delete my Endless Descent account and game data.',
+            '',
+            'Player ID: ' + (id || '(missing - please ask me)')
+          ];
+          if (platform) lines.push('Platform: ' + platform);
+          if (name) lines.push('Display name: ' + name);
+          if (notes) {
+            lines.push('');
+            lines.push('Notes:');
+            lines.push(notes);
+          }
+          lines.push('');
+          lines.push('Thanks.');
+          return lines.join('\n');
+        }
+
+        function refreshPreview() {
+          var body = buildBody();
+          preview.textContent =
+            'To: ' + EMAIL + '\n' +
+            'Subject: ' + SUBJECT + '\n\n' +
+            body;
+        }
+
+        function buildMailto() {
+          var body = buildBody();
+          return (
+            'mailto:' + encodeURIComponent(EMAIL) +
+            '?subject=' + encodeURIComponent(SUBJECT) +
+            '&body=' + encodeURIComponent(body)
+          );
+        }
+
+        form.addEventListener('input', refreshPreview);
+        form.addEventListener('change', refreshPreview);
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          if (!idInput.value.trim()) {
+            idInput.focus();
+            idInput.setAttribute('aria-invalid', 'true');
+            return;
+          }
+          idInput.removeAttribute('aria-invalid');
+          window.location.href = buildMailto();
+        });
+
+        copyBtn.addEventListener('click', function () {
+          var text = EMAIL;
+          var done = function () {
+            copied.classList.add('show');
+            setTimeout(function () { copied.classList.remove('show'); }, 1600);
+          };
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(done, function () {
+              fallbackCopy(text);
+              done();
+            });
+          } else {
+            fallbackCopy(text);
+            done();
+          }
+        });
+
+        function fallbackCopy(text) {
+          var ta = document.createElement('textarea');
+          ta.value = text;
+          ta.setAttribute('readonly', '');
+          ta.style.position = 'absolute';
+          ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand('copy'); } catch (_) {}
+          document.body.removeChild(ta);
+        }
+
+        refreshPreview();
+      })();
+    </script>
+  </body>
+</html>
