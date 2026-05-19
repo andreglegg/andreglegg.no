@@ -26,21 +26,23 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
+
+      - name: Test
+        run: CI=true npm test -- --watchAll=false
 
       - name: Build
         run: npm run build
 
       - name: Keep custom domain
-        run: cp CNAME dist/CNAME
+        run: cp CNAME build/CNAME
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: build
 
   deploy:
     environment:

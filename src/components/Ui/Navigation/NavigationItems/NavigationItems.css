@@ -1,0 +1,26 @@
+.Nav {
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    background: rgba(34,34,34,.97);
+    position: fixed;
+    z-index: 3;
+}
+
+.NavigationItems {
+    margin: 0;
+    padding: 10px 20px;
+    width: var(--container-width);
+    list-style: none;
+    display: flex;
+    flex-flow: row;
+}
+
+
+
+@media (min-width: 500px) {
+    .NavigationItems {
+        flex-flow: row;
+    }
+}
