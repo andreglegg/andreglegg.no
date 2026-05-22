@@ -32,19 +32,22 @@ const classNames = [
     'FocusItem',
     'FocusIcon',
     'Timeline',
-    'LastCoil',
-    'LastCoilCopy',
-    'LastCoilTitle',
+    'Games',
+    'GamesInner',
+    'GamesIntro',
+    'GamesGrid',
+    'GameCard',
+    'GameCardFeatured',
+    'GameMedia',
+    'GameMediaLastCoil',
+    'GameContent',
+    'GameHeader',
+    'GameIcon',
+    'GameLogo',
+    'GameStatus',
+    'GameActions',
     'TagList',
     'ProjectLink',
-    'DeviceFrame',
-    'StoreLinks',
-    'EndlessDescent',
-    'EndlessCopy',
-    'EndlessMedia',
-    'EndlessLogo',
-    'EndlessStatus',
-    'EndlessActions',
     'ComingSoonLink',
     'Footer'
 ];
@@ -519,7 +522,7 @@ class Home extends Component {
                             systems, mobile games, and clean web apps.
                         </p>
                         <div className={classes.HeroActions}>
-                            <a href="#endless-descent">
+                            <a href="#games">
                                 <FaIcon.FaGamepad />
                                 See the games
                             </a>
@@ -567,75 +570,94 @@ class Home extends Component {
                     </div>
                 </section>
 
-                <section className={classes.EndlessDescent} id="endless-descent">
-                    <div className={classes.EndlessMedia}>
-                        <img src={endlessDescentArt} alt="Endless Descent key art" />
-                    </div>
-                    <div className={classes.EndlessCopy}>
-                        <p className={classes.Eyebrow}>Featured iOS release</p>
-                        <img src={endlessDescentLogo} alt="Endless Descent" className={classes.EndlessLogo} />
-                        <div className={classes.EndlessStatus}>
-                            <span><FaIcon.FaApple /> Available on iOS</span>
-                            <span><FaIcon.FaAndroid /> Android testing, coming soon</span>
-                        </div>
-                        <p>
-                            Endless Descent is my one-thumb mobile arcade descent game. Wall-kick
-                            through a collapsing tower, dodge traps, collect coins, unlock auras,
-                            and chase your deepest run on the leaderboards. The iOS version is out
-                            now, and the Android build is in testing.
-                        </p>
-                        <div className={classes.TagList}>
-                            {endlessDescentTags.map(tag => <span key={tag}>{tag}</span>)}
-                        </div>
-                        <div className={classes.EndlessActions}>
-                            <a className={classes.ProjectLink} href={endlessDescentAppStoreUrl} target="_blank" rel="noopener noreferrer">
-                                <FaIcon.FaApple />
-                                App Store
-                            </a>
-                            <a className={classes.ProjectLink} href={endlessDescentSiteUrl} target="_blank" rel="noopener noreferrer">
-                                <FaIcon.FaExternalLink />
-                                Game site
-                            </a>
-                            <span className={classes.ComingSoonLink}>
-                                <FaIcon.FaAndroid />
-                                Google Play soon
-                            </span>
-                        </div>
-                    </div>
-                </section>
-
-                <section className={classes.LastCoil} id="lastcoil">
-                    <div className={classes.LastCoilCopy}>
-                        <p className={classes.Eyebrow}>Also live</p>
-                        <div className={classes.LastCoilTitle}>
-                            <img src={lastcoilIcon} alt="LastCoil app icon" />
+                <section className={classes.Games} id="games">
+                    <div className={classes.GamesInner}>
+                        <div className={classes.GamesIntro}>
                             <div>
-                                <h2>LastCoil</h2>
-                                <p>Fast snake battle royale for iOS and Android.</p>
+                                <p className={classes.Eyebrow}>Games</p>
+                                <h2>Released mobile games with sharp loops and the systems to support them.</h2>
                             </div>
+                            <p>
+                                Endless Descent leads the lineup now that it is out on iOS.
+                                LastCoil remains visible as the established multiplayer project.
+                            </p>
                         </div>
-                        <p>
-                            LastCoil is my modern take on snake: quick matches, tight mobile controls,
-                            realtime multiplayer, cosmetics, bots, leaderboards, and that one-more-round
-                            feeling. It is built with TypeScript, Three.js, Node.js WebSockets, Redis,
-                            PostgreSQL, and Fly.io.
-                        </p>
-                        <div className={classes.TagList}>
-                            {projectTags.map(tag => <span key={tag}>{tag}</span>)}
+
+                        <div className={classes.GamesGrid}>
+                            <article className={`${classes.GameCard} ${classes.GameCardFeatured}`} id="endless-descent">
+                                <div className={classes.GameMedia}>
+                                    <img src={endlessDescentArt} alt="Endless Descent key art" />
+                                </div>
+                                <div className={classes.GameContent}>
+                                    <p className={classes.Eyebrow}>Featured iOS release</p>
+                                    <img src={endlessDescentLogo} alt="Endless Descent" className={classes.GameLogo} />
+                                    <div className={classes.GameStatus}>
+                                        <span><FaIcon.FaApple /> Available on iOS</span>
+                                        <span><FaIcon.FaAndroid /> Android testing</span>
+                                    </div>
+                                    <p>
+                                        Endless Descent is my one-thumb mobile arcade descent game. Wall-kick
+                                        through a collapsing tower, dodge traps, collect coins, unlock auras,
+                                        and chase your deepest run on the leaderboards.
+                                    </p>
+                                    <div className={classes.TagList}>
+                                        {endlessDescentTags.map(tag => <span key={tag}>{tag}</span>)}
+                                    </div>
+                                    <div className={classes.GameActions}>
+                                        <a className={classes.ProjectLink} href={endlessDescentAppStoreUrl} target="_blank" rel="noopener noreferrer">
+                                            <FaIcon.FaApple />
+                                            App Store
+                                        </a>
+                                        <a className={classes.ProjectLink} href={endlessDescentSiteUrl} target="_blank" rel="noopener noreferrer">
+                                            <FaIcon.FaExternalLink />
+                                            Game site
+                                        </a>
+                                        <span className={classes.ComingSoonLink}>
+                                            <FaIcon.FaAndroid />
+                                            Google Play soon
+                                        </span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article className={classes.GameCard} id="lastcoil">
+                                <div className={`${classes.GameMedia} ${classes.GameMediaLastCoil}`}>
+                                    <img src={lastcoilGameplay} alt="LastCoil gameplay screenshot" />
+                                </div>
+                                <div className={classes.GameContent}>
+                                    <p className={classes.Eyebrow}>Also live</p>
+                                    <div className={classes.GameHeader}>
+                                        <img src={lastcoilIcon} alt="LastCoil app icon" className={classes.GameIcon} />
+                                        <div>
+                                            <h3>LastCoil</h3>
+                                            <p>Fast snake battle royale for iOS and Android.</p>
+                                        </div>
+                                    </div>
+                                    <div className={classes.GameStatus}>
+                                        <span><FaIcon.FaApple /> iOS</span>
+                                        <span><FaIcon.FaAndroid /> Android</span>
+                                    </div>
+                                    <p>
+                                        LastCoil is my modern take on snake: quick matches, tight mobile controls,
+                                        realtime multiplayer, cosmetics, bots, leaderboards, and that one-more-round
+                                        feeling.
+                                    </p>
+                                    <div className={classes.TagList}>
+                                        {projectTags.map(tag => <span key={tag}>{tag}</span>)}
+                                    </div>
+                                    <div className={classes.GameActions}>
+                                        <a className={classes.ProjectLink} href={appStoreUrl} target="_blank" rel="noopener noreferrer">
+                                            <FaIcon.FaApple />
+                                            App Store
+                                        </a>
+                                        <a className={classes.ProjectLink} href={googlePlayUrl} target="_blank" rel="noopener noreferrer">
+                                            <FaIcon.FaAndroid />
+                                            Google Play
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
                         </div>
-                        <div className={classes.StoreLinks}>
-                            <a className={classes.ProjectLink} href={appStoreUrl} target="_blank" rel="noopener noreferrer">
-                                <FaIcon.FaApple />
-                                App Store
-                            </a>
-                            <a className={classes.ProjectLink} href={googlePlayUrl} target="_blank" rel="noopener noreferrer">
-                                <FaIcon.FaAndroid />
-                                Google Play
-                            </a>
-                        </div>
-                    </div>
-                    <div className={classes.DeviceFrame}>
-                        <img src={lastcoilGameplay} alt="LastCoil gameplay screenshot" />
                     </div>
                 </section>
 

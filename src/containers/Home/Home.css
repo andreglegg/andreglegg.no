@@ -160,11 +160,10 @@
     font-size: 13px;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0;
 }
 
-.SectionIntro h2,
-.LastCoil h2 {
+.SectionIntro h2 {
     margin: 0;
     color: #121817;
     font-size: 40px;
@@ -173,7 +172,6 @@
 }
 
 .SectionIntro p,
-.LastCoilCopy p,
 .FocusItem p,
 .Timeline p {
     color: #46524e;
@@ -254,49 +252,6 @@
     background: #0a7e74;
 }
 
-.StoreLinks {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-}
-
-.StoreLinks .ProjectLink:nth-child(2),
-.EndlessActions .ProjectLink:nth-child(2) {
-    background: #18201f;
-    color: #fffdf7;
-}
-
-.LastCoil {
-    display: grid;
-    grid-template-columns: minmax(0, 0.92fr) minmax(320px, 0.74fr);
-    gap: 42px;
-    align-items: center;
-    max-width: 1180px;
-    margin: 0 auto 36px;
-    padding: 64px 28px;
-    border-top: 1px solid rgba(24, 32, 31, 0.1);
-    border-bottom: 1px solid rgba(24, 32, 31, 0.1);
-}
-
-.LastCoilTitle {
-    display: flex;
-    gap: 18px;
-    align-items: center;
-    margin-bottom: 22px;
-}
-
-.LastCoilTitle img {
-    width: 72px;
-    height: 72px;
-    border-radius: 8px;
-    box-shadow: 0 20px 50px rgba(24, 32, 31, 0.16);
-}
-
-.LastCoilTitle p {
-    margin: 7px 0 0;
-    color: #65706c;
-}
-
 .TagList {
     display: flex;
     flex-wrap: wrap;
@@ -319,71 +274,174 @@
     background: #0a7e74;
 }
 
-.DeviceFrame {
-    position: relative;
-    padding: 10px;
-    border-radius: 8px;
-    background: #121817;
-    box-shadow: 0 26px 70px rgba(24, 32, 31, 0.22);
-    transform: perspective(1100px) rotateY(-7deg) rotateX(4deg);
+.Games {
+    margin-top: 28px;
+    padding: 82px 0 90px;
+    background: #101817;
+    color: #fffdf7;
+    border-top: 1px solid rgba(24, 32, 31, 0.1);
+    border-bottom: 1px solid rgba(24, 32, 31, 0.16);
 }
 
-.DeviceFrame:before {
-    content: '';
-    position: absolute;
-    inset: -18px;
-    z-index: -1;
-    border: 1px solid rgba(10, 126, 116, 0.2);
-    border-radius: 8px;
-    transform: translate3d(18px, 16px, -40px);
-}
-
-.DeviceFrame img {
-    display: block;
-    width: 100%;
-    border-radius: 6px;
-}
-
-.EndlessDescent {
-    display: grid;
-    grid-template-columns: minmax(0, 0.84fr) minmax(280px, 0.58fr);
-    gap: 34px;
-    align-items: center;
+.GamesInner {
     max-width: 1180px;
-    margin: 0 auto 34px;
-    padding: 34px 28px 64px;
+    margin: 0 auto;
+    padding: 0 28px;
 }
 
-.EndlessMedia {
+.GamesIntro {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(280px, 0.48fr);
+    gap: 34px;
+    align-items: end;
+    margin-bottom: 30px;
+}
+
+.Games .Eyebrow {
+    color: #8bd8c9;
+}
+
+.GamesIntro h2 {
+    max-width: 780px;
+    margin: 0;
+    color: #fffdf7;
+    font-size: 42px;
+    line-height: 1.08;
+    letter-spacing: 0;
+}
+
+.GamesIntro > p {
+    margin: 0;
+    color: #b8c5c1;
+    font-size: 16px;
+    line-height: 1.65;
+}
+
+.GamesGrid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.12fr) minmax(320px, 0.88fr);
+    gap: 18px;
+    align-items: stretch;
+}
+
+.GameCard {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
+    border: 1px solid rgba(255, 253, 247, 0.16);
     border-radius: 8px;
-    background: #121817;
-    box-shadow: 0 24px 68px rgba(24, 32, 31, 0.2);
+    background: #f6f2e8;
+    color: #18201f;
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.24);
 }
 
-.EndlessMedia img {
+.GameCardFeatured {
+    background: #fffdf7;
+}
+
+.GameMedia {
+    position: relative;
+    min-height: 272px;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #121817;
+}
+
+.GameCardFeatured .GameMedia {
+    min-height: 342px;
+}
+
+.GameMedia img {
     display: block;
     width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.EndlessCopy {
-    padding: 26px 0;
-}
-
-.EndlessLogo {
-    display: block;
-    width: min(330px, 100%);
-    margin: 4px 0 18px;
-}
-
-.EndlessStatus {
+.GameMediaLastCoil {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    min-height: 320px;
+    padding: 28px;
+    background:
+        radial-gradient(circle at 18% 22%, rgba(210, 68, 47, 0.26), rgba(210, 68, 47, 0) 34%),
+        radial-gradient(circle at 78% 76%, rgba(10, 126, 116, 0.34), rgba(10, 126, 116, 0) 42%),
+        #121817;
+}
+
+.GameMediaLastCoil img {
+    width: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 22px 52px rgba(0, 0, 0, 0.34);
+}
+
+.GameContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 28px;
+}
+
+.GameContent p {
+    color: #46524e;
+    font-size: 16px;
+    line-height: 1.65;
+}
+
+.GameContent > p:not(.Eyebrow) {
+    margin: 0;
+}
+
+.GameHeader {
+    display: flex;
+    gap: 16px;
+    align-items: center;
     margin: 0 0 18px;
 }
 
-.EndlessStatus span {
+.GameHeader h3 {
+    margin: 0;
+    color: #121817;
+    font-size: 32px;
+    line-height: 1.08;
+    letter-spacing: 0;
+}
+
+.GameHeader p {
+    margin: 6px 0 0;
+    color: #65706c;
+    font-size: 15px;
+    line-height: 1.45;
+}
+
+.GameIcon {
+    width: 66px;
+    height: 66px;
+    flex: 0 0 auto;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 18px 42px rgba(24, 32, 31, 0.18);
+}
+
+.GameLogo {
+    display: block;
+    width: min(320px, 100%);
+    margin: 2px 0 18px;
+}
+
+.GameStatus {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 18px;
+}
+
+.GameStatus span {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -397,22 +455,32 @@
     font-weight: 800;
 }
 
-.EndlessStatus span:first-child {
+.GameStatus span:first-child {
     background: #e1f0ed;
     color: #0a665f;
 }
 
-.EndlessCopy p {
-    color: #46524e;
-    font-size: 16px;
-    line-height: 1.65;
+.GameCardFeatured .GameStatus span:first-child {
+    border-color: transparent;
+    background: #0a7e74;
+    color: #fffdf7;
 }
 
-.EndlessActions {
+.Games .TagList {
+    margin: 22px 0 26px;
+}
+
+.GameActions {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
-    margin-top: 6px;
+    margin-top: auto;
+    padding-top: 4px;
+}
+
+.GameActions .ProjectLink:nth-child(2) {
+    background: #18201f;
+    color: #fffdf7;
 }
 
 .ComingSoonLink {
@@ -461,8 +529,8 @@
     }
 
     .SectionIntro,
-    .LastCoil,
-    .EndlessDescent {
+    .GamesIntro,
+    .GamesGrid {
         grid-template-columns: 1fr;
     }
 
@@ -470,9 +538,12 @@
         grid-template-columns: 1fr;
     }
 
-    .DeviceFrame {
-        max-width: 580px;
-        transform: none;
+    .Games {
+        padding: 66px 0 74px;
+    }
+
+    .GameCardFeatured .GameMedia {
+        min-height: 286px;
     }
 }
 
@@ -514,8 +585,7 @@
     }
 
     .Section,
-    .LastCoil,
-    .EndlessDescent,
+    .GamesInner,
     .Footer {
         padding-left: 20px;
         padding-right: 20px;
@@ -532,27 +602,43 @@
     }
 
     .SectionIntro h2,
-    .LastCoil h2 {
+    .GamesIntro h2 {
         font-size: 28px;
     }
 
-    .LastCoilTitle {
+    .GamesIntro {
+        gap: 16px;
+    }
+
+    .GameContent {
+        padding: 22px;
+    }
+
+    .GameMedia,
+    .GameCardFeatured .GameMedia {
+        min-height: 220px;
+    }
+
+    .GameMediaLastCoil {
+        padding: 20px;
+    }
+
+    .GameHeader {
         align-items: flex-start;
     }
 
-    .LastCoilTitle img {
+    .GameIcon {
         width: 56px;
         height: 56px;
     }
 
-    .StoreLinks .ProjectLink,
-    .EndlessActions .ProjectLink,
-    .ComingSoonLink {
-        width: 100%;
+    .GameHeader h3 {
+        font-size: 26px;
     }
 
-    .EndlessDescent {
-        padding-top: 20px;
+    .GameActions .ProjectLink,
+    .GameActions .ComingSoonLink {
+        width: 100%;
     }
 
     .Footer {
