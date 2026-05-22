@@ -519,7 +519,7 @@ class Home extends Component {
                             systems, mobile games, and clean web apps.
                         </p>
                         <div className={classes.HeroActions}>
-                            <a href="#lastcoil">
+                            <a href="#endless-descent">
                                 <FaIcon.FaGamepad />
                                 See the games
                             </a>
@@ -567,9 +567,46 @@ class Home extends Component {
                     </div>
                 </section>
 
+                <section className={classes.EndlessDescent} id="endless-descent">
+                    <div className={classes.EndlessMedia}>
+                        <img src={endlessDescentArt} alt="Endless Descent key art" />
+                    </div>
+                    <div className={classes.EndlessCopy}>
+                        <p className={classes.Eyebrow}>Featured iOS release</p>
+                        <img src={endlessDescentLogo} alt="Endless Descent" className={classes.EndlessLogo} />
+                        <div className={classes.EndlessStatus}>
+                            <span><FaIcon.FaApple /> Available on iOS</span>
+                            <span><FaIcon.FaAndroid /> Android testing, coming soon</span>
+                        </div>
+                        <p>
+                            Endless Descent is my one-thumb mobile arcade descent game. Wall-kick
+                            through a collapsing tower, dodge traps, collect coins, unlock auras,
+                            and chase your deepest run on the leaderboards. The iOS version is out
+                            now, and the Android build is in testing.
+                        </p>
+                        <div className={classes.TagList}>
+                            {endlessDescentTags.map(tag => <span key={tag}>{tag}</span>)}
+                        </div>
+                        <div className={classes.EndlessActions}>
+                            <a className={classes.ProjectLink} href={endlessDescentAppStoreUrl} target="_blank" rel="noopener noreferrer">
+                                <FaIcon.FaApple />
+                                App Store
+                            </a>
+                            <a className={classes.ProjectLink} href={endlessDescentSiteUrl} target="_blank" rel="noopener noreferrer">
+                                <FaIcon.FaExternalLink />
+                                Game site
+                            </a>
+                            <span className={classes.ComingSoonLink}>
+                                <FaIcon.FaAndroid />
+                                Google Play soon
+                            </span>
+                        </div>
+                    </div>
+                </section>
+
                 <section className={classes.LastCoil} id="lastcoil">
                     <div className={classes.LastCoilCopy}>
-                        <p className={classes.Eyebrow}>Featured project</p>
+                        <p className={classes.Eyebrow}>Also live</p>
                         <div className={classes.LastCoilTitle}>
                             <img src={lastcoilIcon} alt="LastCoil app icon" />
                             <div>
@@ -602,50 +639,13 @@ class Home extends Component {
                     </div>
                 </section>
 
-                <section className={classes.EndlessDescent}>
-                    <div className={classes.EndlessMedia}>
-                        <img src={endlessDescentArt} alt="Endless Descent key art" />
-                    </div>
-                    <div className={classes.EndlessCopy}>
-                        <p className={classes.Eyebrow}>New iOS release</p>
-                        <img src={endlessDescentLogo} alt="Endless Descent" className={classes.EndlessLogo} />
-                        <div className={classes.EndlessStatus}>
-                            <span><FaIcon.FaApple /> Available on iOS</span>
-                            <span><FaIcon.FaAndroid /> Android testing, coming soon</span>
-                        </div>
-                        <p>
-                            Endless Descent is my one-thumb mobile arcade descent game. Wall-kick
-                            through a collapsing tower, dodge traps, collect coins, unlock auras,
-                            and chase your deepest run on the leaderboards. The iOS version is out
-                            now, and the Android build is in testing.
-                        </p>
-                        <div className={classes.TagList}>
-                            {endlessDescentTags.map(tag => <span key={tag}>{tag}</span>)}
-                        </div>
-                        <div className={classes.EndlessActions}>
-                            <a className={classes.ProjectLink} href={endlessDescentAppStoreUrl} target="_blank" rel="noopener noreferrer">
-                                <FaIcon.FaApple />
-                                App Store
-                            </a>
-                            <a className={classes.ProjectLink} href={endlessDescentSiteUrl} target="_blank" rel="noopener noreferrer">
-                                <FaIcon.FaExternalLink />
-                                Game site
-                            </a>
-                            <span className={classes.ComingSoonLink}>
-                                <FaIcon.FaAndroid />
-                                Google Play soon
-                            </span>
-                        </div>
-                    </div>
-                </section>
-
                 <footer className={classes.Footer}>
                     <span>Full site coming soon.</span>
                     <div>
                         <a href={githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
                         <a href={linkedInUrl} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        <a href={appStoreUrl} target="_blank" rel="noopener noreferrer">LastCoil</a>
                         <a href={endlessDescentSiteUrl} target="_blank" rel="noopener noreferrer">Endless Descent</a>
+                        <a href={appStoreUrl} target="_blank" rel="noopener noreferrer">LastCoil</a>
                     </div>
                 </footer>
             </main>
