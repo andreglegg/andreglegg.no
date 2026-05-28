@@ -11,6 +11,7 @@ import endlessDescentArt from '../../assets/images/placeholder/endless-descent-l
 const appStoreUrl = 'https://apps.apple.com/us/app/lastcoil-snake-battle-royale/id6758517312';
 const googlePlayUrl = 'https://play.google.com/store/apps/details?id=io.lastcoil.game';
 const endlessDescentAppStoreUrl = 'https://apps.apple.com/app/id6768305126';
+const endlessDescentGooglePlayUrl = 'https://play.google.com/store/apps/details?id=no.andreglegg.endlessdescent';
 const endlessDescentSiteUrl = 'https://endlessdescent.andreglegg.no/';
 const githubUrl = 'https://github.com/andreglegg';
 const linkedInUrl = 'https://www.linkedin.com/in/andre-glegg-060a3164';
@@ -65,7 +66,7 @@ const focusAreas = [
     {
         icon: <FaIcon.FaGamepad />,
         title: 'Realtime games',
-        text: 'LastCoil is live on iOS and Android. Endless Descent is now live on iOS, with Android testing underway.'
+        text: 'LastCoil and Endless Descent are live on iOS and Android, each with a tight arcade loop and the backend pieces needed to support them.'
     },
     {
         icon: <FaIcon.FaCode />,
@@ -95,9 +96,10 @@ const projectTags = [
 
 const endlessDescentTags = [
     'iOS released',
-    'Android testing',
+    'Android released',
     'Godot',
     'Game Center',
+    'Google Play',
     'Leaderboards',
     'Mobile arcade'
 ];
@@ -578,7 +580,7 @@ class Home extends Component {
                                 <h2>Released mobile games with sharp loops and the systems to support them.</h2>
                             </div>
                             <p>
-                                Endless Descent leads the lineup now that it is out on iOS.
+                                Endless Descent leads the lineup now that it is out on iOS and Android.
                                 LastCoil remains visible as the established multiplayer project.
                             </p>
                         </div>
@@ -589,11 +591,11 @@ class Home extends Component {
                                     <img src={endlessDescentArt} alt="Endless Descent key art" />
                                 </div>
                                 <div className={classes.GameContent}>
-                                    <p className={classes.Eyebrow}>Featured iOS release</p>
+                                    <p className={classes.Eyebrow}>Featured mobile release</p>
                                     <img src={endlessDescentLogo} alt="Endless Descent" className={classes.GameLogo} />
                                     <div className={classes.GameStatus}>
                                         <span><FaIcon.FaApple /> Available on iOS</span>
-                                        <span><FaIcon.FaAndroid /> Android testing</span>
+                                        <span><FaIcon.FaAndroid /> Available on Android</span>
                                     </div>
                                     <p>
                                         Endless Descent is my one-thumb mobile arcade descent game. Wall-kick
@@ -608,14 +610,14 @@ class Home extends Component {
                                             <FaIcon.FaApple />
                                             App Store
                                         </a>
+                                        <a className={classes.ProjectLink} href={endlessDescentGooglePlayUrl} target="_blank" rel="noopener noreferrer">
+                                            <FaIcon.FaAndroid />
+                                            Google Play
+                                        </a>
                                         <a className={classes.ProjectLink} href={endlessDescentSiteUrl} target="_blank" rel="noopener noreferrer">
                                             <FaIcon.FaExternalLink />
                                             Game site
                                         </a>
-                                        <span className={classes.ComingSoonLink}>
-                                            <FaIcon.FaAndroid />
-                                            Google Play soon
-                                        </span>
                                     </div>
                                 </div>
                             </article>
