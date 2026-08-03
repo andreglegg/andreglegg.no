@@ -20,7 +20,7 @@ const githubUrl = 'https://github.com/andreglegg';
 const linkedInUrl = 'https://www.linkedin.com/in/andre-glegg-060a3164';
 const toolsSiteUrl = 'https://tools.andreglegg.no/';
 const mediumUrl = 'https://medium.com/@andreglegg';
-const email = 'andre@lastcoil.com';
+const email = 'andreglegg@me.com';
 const treegenConnectCommand = 'claude mcp add --transport http treegen https://mcp.andreglegg.no/treegen';
 
 const external = { target: '_blank', rel: 'noopener noreferrer' };
