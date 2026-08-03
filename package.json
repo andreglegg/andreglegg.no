@@ -55,6 +55,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "writing": "node scripts/fetch-writing.js",
+    "prebuild": "node scripts/fetch-writing.js",
     "build": "react-scripts build",
     "test": "node scripts/test.js --env=jsdom",
     "eject": "react-scripts eject"

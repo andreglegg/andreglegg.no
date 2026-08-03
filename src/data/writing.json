@@ -1,0 +1,40 @@
+{
+    "posts": [
+        {
+            "title": "The Agent Loop Is Not a Workflow",
+            "url": "https://medium.com/@andreglegg/the-agent-loop-is-not-a-workflow-86cd81294f4c",
+            "published": "2026-07-29",
+            "label": "Jul 2026",
+            "tags": [
+                "llm",
+                "software-engineering",
+                "agentic-ai"
+            ],
+            "summary": "What building reliable AI agents taught me about state, verification, and knowing when to stop"
+        },
+        {
+            "title": "Tool Design Beats Clever Prompts",
+            "url": "https://medium.com/@andreglegg/tool-design-beats-clever-prompts-781124ea21c1",
+            "published": "2026-07-26",
+            "label": "Jul 2026",
+            "tags": [
+                "ai-agent",
+                "artificial-intelligence",
+                "software-engineering"
+            ],
+            "summary": "A debugging experiment changed how I think about building LLM software"
+        },
+        {
+            "title": "Home Computers Are Becoming Tiny AI Datacenters",
+            "url": "https://medium.com/@andreglegg/home-computers-are-becoming-tiny-ai-datacenters-8e7d737cdf80",
+            "published": "2026-07-21",
+            "label": "Jul 2026",
+            "tags": [
+                "artificial-intelligence",
+                "gpu-computing",
+                "large-language-models"
+            ],
+            "summary": "Most of the computing power in our homes sits idle."
+        }
+    ]
+}

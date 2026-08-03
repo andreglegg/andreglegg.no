@@ -2,7 +2,20 @@
     min-height: 100vh;
     color: #18201f;
     background: #f4f1e8;
-    font-family: 'Lato', 'Roboto', sans-serif;
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.Home h1,
+.Home h2,
+.Home h3 {
+    font-family: 'Archivo', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+}
+
+.Home :focus-visible {
+    outline: 2px solid #0a7e74;
+    outline-offset: 3px;
 }
 
 .Home a {
@@ -12,7 +25,7 @@
 
 .Hero {
     position: relative;
-    min-height: 92vh;
+    min-height: auto;
     overflow: hidden;
     background: #f4f1e8;
     border-bottom: 1px solid rgba(24, 32, 31, 0.1);
@@ -50,10 +63,9 @@
 .HeroContent {
     position: relative;
     z-index: 2;
-    min-height: 92vh;
     max-width: 1180px;
     margin: 0 auto;
-    padding: 76px 28px 88px;
+    padding: 92px 28px 96px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -82,12 +94,13 @@
 }
 
 .Hero h1 {
-    max-width: 780px;
-    margin: 24px 0 18px;
+    max-width: 900px;
+    margin: 10px 0 20px;
     color: #121817;
-    font-size: 76px;
-    line-height: 0.98;
-    letter-spacing: 0;
+    font-size: 84px;
+    font-weight: 800;
+    line-height: 0.94;
+    letter-spacing: -0.035em;
 }
 
 .Lead {
@@ -120,8 +133,7 @@
     font-weight: 700;
 }
 
-.HeroActions a:nth-child(2),
-.HeroActions a:nth-child(3) {
+.HeroActions a:not(:first-child) {
     background: rgba(255, 253, 247, 0.78);
     color: #18201f;
 }
@@ -497,26 +509,17 @@
     font-weight: 800;
 }
 
+/* Footer is now a dark closing band with a real call to contact, so it reads
+   as the end of an argument rather than a row of leftover links. */
 .Footer {
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 24px 28px 44px;
-    display: flex;
-    justify-content: space-between;
-    gap: 18px;
-    color: #65706c;
+    padding: 74px 0 52px;
+    background: #101817;
+    color: #b8c5c1;
     font-size: 14px;
 }
 
-.Footer div {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-}
-
-.Footer a {
-    color: #18201f;
-    font-weight: 700;
+.Footer .Eyebrow {
+    color: #8bd8c9;
 }
 
 @media (max-width: 900px) {
@@ -847,5 +850,423 @@
         border-top: 1px solid rgba(139, 216, 201, 0.24);
         justify-content: center;
         padding: 13px 18px;
+    }
+}
+
+/* --- Nav ------------------------------------------------------------------ */
+.Nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 14px 28px;
+    background: rgba(244, 241, 232, 0.86);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(24, 32, 31, 0.09);
+}
+.NavName {
+    font-family: 'Archivo', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+    color: #121817;
+}
+.NavLinks {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+.NavLinks a {
+    padding: 7px 12px;
+    border-radius: 7px;
+    color: #46524e;
+    font-size: 14px;
+    font-weight: 500;
+}
+.NavLinks a:hover {
+    background: rgba(10, 126, 116, 0.09);
+    color: #0a7e74;
+}
+.NavContact {
+    margin-left: 6px;
+    background: #18201f;
+    color: #fffdf7 !important;
+    font-weight: 600 !important;
+}
+.NavContact:hover {
+    background: #0a7e74;
+}
+
+/* --- Hero additions ------------------------------------------------------- */
+.Kicker {
+    margin: 0;
+    color: #0a7e74;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13.5px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+/* The manifest — a shipping ledger, not stat tiles. Every row is a real
+   artifact someone can open right now, so it navigates as well as it proves. */
+.Manifest {
+    margin-top: 40px;
+    max-width: 680px;
+}
+.ManifestLabel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 6px;
+    color: #46524e;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+.Manifest ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid rgba(24, 32, 31, 0.14);
+}
+.Manifest li {
+    border-bottom: 1px solid rgba(24, 32, 31, 0.14);
+}
+.Manifest li a {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto 26px;
+    align-items: baseline;
+    gap: 16px;
+    padding: 13px 4px 13px 2px;
+    transition: padding 0.16s ease, background 0.16s ease;
+}
+.Manifest li a:hover {
+    background: rgba(10, 126, 116, 0.06);
+    padding-left: 10px;
+}
+.ManifestName {
+    font-family: 'Archivo', system-ui, sans-serif;
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: #121817;
+}
+.ManifestMeta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: #6b7671;
+    text-align: right;
+}
+.ManifestGo {
+    color: #0a7e74;
+    font-size: 15px;
+    text-align: right;
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: opacity 0.16s ease, transform 0.16s ease;
+}
+.Manifest li a:hover .ManifestGo {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* --- Writing -------------------------------------------------------------- */
+.Writing {
+    padding: 82px 0 88px;
+    background: #f4f1e8;
+    border-bottom: 1px solid rgba(24, 32, 31, 0.1);
+}
+.WritingInner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 28px;
+}
+.WritingIntro {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: 32px;
+    align-items: end;
+    margin-bottom: 34px;
+}
+.WritingIntro h2 {
+    margin: 0;
+    font-size: 30px;
+    line-height: 1.22;
+    color: #18201f;
+}
+.WritingIntro > p {
+    margin: 0;
+    color: #46524e;
+    line-height: 1.65;
+}
+
+.PostList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid rgba(24, 32, 31, 0.14);
+}
+.PostList li {
+    border-bottom: 1px solid rgba(24, 32, 31, 0.14);
+}
+.PostList li a {
+    display: grid;
+    grid-template-columns: 108px minmax(0, 1fr) 30px;
+    gap: 22px;
+    align-items: start;
+    padding: 24px 4px 24px 2px;
+    transition: padding 0.16s ease, background 0.16s ease;
+}
+.PostList li a:hover {
+    background: rgba(201, 138, 46, 0.07);
+    padding-left: 12px;
+}
+.PostDate {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: #8a6214;
+    padding-top: 5px;
+    letter-spacing: 0.02em;
+}
+.PostBody h3 {
+    margin: 0 0 7px;
+    font-size: 22px;
+    line-height: 1.25;
+    color: #121817;
+}
+.PostBody p {
+    margin: 0;
+    color: #46524e;
+    font-size: 15.5px;
+    line-height: 1.6;
+    max-width: 68ch;
+}
+.PostTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 13px;
+}
+.PostTags span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    color: #6b7671;
+    background: rgba(255, 253, 247, 0.9);
+    border: 1px solid rgba(24, 32, 31, 0.1);
+    border-radius: 5px;
+    padding: 3px 7px;
+}
+.PostGo {
+    color: #8a6214;
+    font-size: 15px;
+    padding-top: 4px;
+    text-align: right;
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: opacity 0.16s ease, transform 0.16s ease;
+}
+.PostList li a:hover .PostGo {
+    opacity: 1;
+    transform: translateX(0);
+}
+.WritingMore {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 26px;
+    color: #8a6214 !important;
+    font-weight: 600;
+    font-size: 15px;
+    border-bottom: 1px solid rgba(138, 98, 20, 0.3);
+    padding-bottom: 2px;
+}
+.WritingMore:hover {
+    border-bottom-color: #8a6214;
+}
+
+/* --- Footer --------------------------------------------------------------- */
+.FooterInner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 28px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 40px;
+    align-items: start;
+}
+.FooterLead h2 {
+    margin: 0 0 10px;
+    font-size: 34px;
+    line-height: 1.1;
+    color: #fffdf7;
+}
+.FooterLead > p {
+    margin: 0;
+    max-width: 46ch;
+    color: #b8c5c1;
+    line-height: 1.65;
+}
+.FooterMail {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 22px;
+    padding: 13px 20px;
+    border-radius: 8px;
+    background: #0a7e74;
+    color: #fffdf7 !important;
+    font-weight: 600;
+}
+.FooterMail:hover {
+    background: #8bd8c9;
+    color: #101817 !important;
+}
+.FooterLinks {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+.FooterLinks > div {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    align-items: flex-start;
+}
+.FooterHeading {
+    margin: 0 0 3px;
+    color: #8bd8c9;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+.FooterLinks a {
+    color: #b8c5c1;
+    font-size: 15px;
+}
+.FooterLinks a:hover {
+    color: #fffdf7;
+}
+.FooterFine {
+    max-width: 1180px;
+    margin: 44px auto 0;
+    padding: 22px 28px 0;
+    border-top: 1px solid rgba(255, 253, 247, 0.12);
+    color: #7d8a86;
+    font-size: 13.5px;
+}
+
+@media (max-width: 860px) {
+    .Nav {
+        padding: 12px 18px;
+    }
+    .NavLinks a {
+        padding: 6px 9px;
+        font-size: 13.5px;
+    }
+    .Manifest li a {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 10px;
+    }
+    .ManifestGo {
+        display: none;
+    }
+    .PostList li a {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 8px;
+    }
+    .PostGo {
+        display: none;
+    }
+    .PostDate {
+        padding-top: 0;
+    }
+    .WritingIntro,
+    .FooterInner {
+        grid-template-columns: 1fr;
+        align-items: start;
+        gap: 20px;
+    }
+    .WritingIntro h2 {
+        font-size: 25px;
+    }
+    .FooterLead h2 {
+        font-size: 27px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .Home * {
+        transition-duration: 0.001ms !important;
+    }
+}
+
+/* --- Experience ----------------------------------------------------------- */
+/* Reverse-chronological and company-anchored: an employer scanning this needs
+   to find the most recent role in one movement, not read a paragraph. */
+.Experience {
+    margin-top: 42px;
+}
+.ExperienceLabel {
+    margin: 0 0 4px;
+    color: #6b7671;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+.Experience dl {
+    margin: 0;
+    border-top: 1px solid rgba(24, 32, 31, 0.14);
+}
+.Experience dl > div {
+    display: grid;
+    grid-template-columns: 168px minmax(0, 1fr);
+    gap: 24px;
+    padding: 15px 2px;
+    border-bottom: 1px solid rgba(24, 32, 31, 0.14);
+}
+.Experience dt {
+    font-family: 'Archivo', system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #121817;
+    letter-spacing: -0.01em;
+}
+.Experience dd {
+    margin: 0;
+    color: #46524e;
+    font-size: 15.5px;
+    line-height: 1.55;
+}
+
+/* Portrait removed, so the intro is a single column now. */
+.SectionIntro {
+    grid-template-columns: minmax(0, 820px);
+}
+
+/* Unify the focus chips on the warm palette — the old red and gold fought it. */
+.FocusItem:nth-child(2) .FocusIcon {
+    background: #f5eacb;
+    color: #8a6214;
+}
+.FocusItem:nth-child(3) .FocusIcon {
+    background: #e1f0ed;
+    color: #0a7e74;
+}
+
+@media (max-width: 860px) {
+    .Experience dl > div {
+        grid-template-columns: 1fr;
+        gap: 4px;
     }
 }

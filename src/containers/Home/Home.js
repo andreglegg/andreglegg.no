@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import './Home.css';
 import * as FaIcon from 'react-icons/lib/fa';
 
-import andrePortrait from '../../assets/images/placeholder/andre.png';
+// Refreshed from Medium by scripts/fetch-writing.js on every build.
+import writing from '../../data/writing.json';
+
 import lastcoilIcon from '../../assets/images/placeholder/lastcoil-icon.jpg';
 import lastcoilGameplay from '../../assets/images/placeholder/lastcoil-gameplay.png';
 import endlessDescentLogo from '../../assets/images/placeholder/endless-descent-logo.jpg';
@@ -16,9 +18,56 @@ const endlessDescentSiteUrl = 'https://endlessdescent.andreglegg.no/';
 const githubUrl = 'https://github.com/andreglegg';
 const linkedInUrl = 'https://www.linkedin.com/in/andre-glegg-060a3164';
 const toolsSiteUrl = 'https://tools.andreglegg.no/';
+const mediumUrl = 'https://medium.com/@andreglegg';
+const email = 'andre@lastcoil.com';
 const treegenConnectCommand = 'claude mcp add --transport http treegen https://mcp.andreglegg.no/treegen';
+
+const external = { target: '_blank', rel: 'noopener noreferrer' };
+
+const posts = writing.posts || [];
+const postCount = posts.length;
+
+// Everything shipped and reachable today. Doubles as the hero's navigation, so
+// each row has to lead somewhere real. The post count comes from the feed data
+// so it cannot go stale when a new article lands.
+const liveWork = [
+    { name: 'Endless Descent', meta: 'iOS · Android', href: endlessDescentAppStoreUrl, external: true },
+    { name: 'LastCoil', meta: 'iOS · Android', href: appStoreUrl, external: true },
+    { name: 'treegen', meta: 'Public MCP server', href: toolsSiteUrl, external: true },
+    {
+        name: 'Writing',
+        meta: postCount === 1 ? 'One post on Medium' : postCount + ' posts on Medium',
+        href: '#writing',
+        external: false
+    }
+].filter(entry => entry.name !== 'Writing' || postCount > 0);
 const classNames = [
     'Home',
+    'Nav',
+    'NavName',
+    'NavLinks',
+    'NavContact',
+    'Kicker',
+    'Manifest',
+    'ManifestLabel',
+    'ManifestName',
+    'ManifestMeta',
+    'ManifestGo',
+    'Writing',
+    'WritingInner',
+    'WritingIntro',
+    'PostList',
+    'PostDate',
+    'PostBody',
+    'PostTags',
+    'PostGo',
+    'WritingMore',
+    'FooterInner',
+    'FooterLead',
+    'FooterMail',
+    'FooterLinks',
+    'FooterHeading',
+    'FooterFine',
     'Hero',
     'SceneCanvas',
     'HeroWash',
@@ -29,12 +78,12 @@ const classNames = [
     'HeroActions',
     'Section',
     'SectionIntro',
-    'Portrait',
     'Eyebrow',
     'FocusGrid',
     'FocusItem',
     'FocusIcon',
-    'Timeline',
+    'Experience',
+    'ExperienceLabel',
     'Games',
     'GamesInner',
     'GamesIntro',
@@ -94,11 +143,29 @@ const focusAreas = [
     }
 ];
 
-const timeline = [
-    'Started out in Jamaica doing web, design, Linux servers, and streaming systems for Irie FM and ZipFM.',
-    'Moved to Norway in 2016 and kept building: Greenpeace first, then teaching kids code at Bitcamp.',
-    'Led full-stack work at Fjong across rental flows, inventory, subscriptions, and internal tools.',
-    'At Aize, worked on 3D digital twin viewers and engineering document tooling for serious industrial data.'
+// Most recent first — anyone scanning a CV reads top-down and stops early.
+// Only claims already made on the site; no dates beyond the stated 2016 move.
+const experience = [
+    {
+        org: 'Aize',
+        work: '3D digital twin viewers and engineering document tooling for serious industrial data.'
+    },
+    {
+        org: 'Fjong',
+        work: 'Led full-stack work across rental flows, inventory, subscriptions, and internal tools.'
+    },
+    {
+        org: 'Bitcamp',
+        work: 'Taught kids to code.'
+    },
+    {
+        org: 'Greenpeace',
+        work: 'First role after moving to Norway in 2016.'
+    },
+    {
+        org: 'Irie FM · ZipFM',
+        work: 'Where it started, in Jamaica: web, design, Linux servers, and streaming systems.'
+    }
 ];
 
 const projectTags = [
@@ -609,7 +676,9 @@ class BackgroundMiniGame extends Component {
         this.hazards.forEach(this.drawHazard);
         this.drawSparks();
         this.drawPlayer();
-        this.drawScore();
+        // The score readout is deliberately not drawn: with no visible game
+        // around it, "ENERGY 04" in the corner of a CV reads as debug output.
+        // The drifting shapes stay as ambient texture.
         this.frameId = this.requestFrame(this.tick);
     };
 
@@ -622,44 +691,71 @@ class Home extends Component {
     render() {
         return (
             <main className={classes.Home}>
-                <section className={classes.Hero}>
+                <nav className={classes.Nav}>
+                    <a className={classes.NavName} href="#top">André Glegg</a>
+                    <div className={classes.NavLinks}>
+                        <a href="#work">Work</a>
+                        <a href="#games">Games</a>
+                        <a href="#tools">Tools</a>
+                        <a href="#writing">Writing</a>
+                        <a className={classes.NavContact} href={`mailto:${email}`}>Get in touch</a>
+                    </div>
+                </nav>
+
+                <section className={classes.Hero} id="top">
                     <BackgroundMiniGame />
                     <div className={classes.HeroWash} />
                     <div className={classes.HeroContent}>
-                        <div className={classes.StatusLine}>
-                            <span className={classes.StatusDot} />
-                            Site rebuild in progress
-                        </div>
+                        <p className={classes.Kicker}>Full-stack &amp; 3D engineer · Oslo</p>
                         <h1>André Glegg</h1>
                         <p className={classes.Lead}>
-                            I'm rebuilding the site properly. Short version for now: I'm a
-                            Jamaican-born, Norway-based developer who builds 3D tools, realtime
-                            systems, mobile games, and clean web apps.
+                            Jamaican-born, Oslo-based. I build 3D tools for industrial data,
+                            realtime systems, and mobile games — and I ship them.
                         </p>
+
+                        {/* The manifest: what is actually running right now, doubling as
+                            navigation. Evidence beats adjectives on a portfolio. */}
+                        <div className={classes.Manifest}>
+                            <p className={classes.ManifestLabel}>
+                                <span className={classes.StatusDot} />
+                                Live right now
+                            </p>
+                            <ul>
+                                {liveWork.map(entry => (
+                                    <li key={entry.name}>
+                                        <a href={entry.href} {...(entry.external ? external : {})}>
+                                            <span className={classes.ManifestName}>{entry.name}</span>
+                                            <span className={classes.ManifestMeta}>{entry.meta}</span>
+                                            <span className={classes.ManifestGo} aria-hidden="true">→</span>
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
                         <div className={classes.HeroActions}>
-                            <a href="#games">
-                                <FaIcon.FaGamepad />
-                                See the games
+                            <a href={`mailto:${email}`}>
+                                <FaIcon.FaEnvelope />
+                                Hire me
                             </a>
-                            <a href="#tools">
-                                <FaIcon.FaTerminal />
-                                Use my tools
-                            </a>
-                            <a href={githubUrl} target="_blank" rel="noopener noreferrer">
+                            <a href={githubUrl} {...external}>
                                 <FaIcon.FaGithub />
                                 GitHub
                             </a>
-                            <a href={linkedInUrl} target="_blank" rel="noopener noreferrer">
+                            <a href={linkedInUrl} {...external}>
                                 <FaIcon.FaLinkedin />
                                 LinkedIn
+                            </a>
+                            <a href={mediumUrl} {...external}>
+                                <FaIcon.FaMedium />
+                                Medium
                             </a>
                         </div>
                     </div>
                 </section>
 
-                <section className={classes.Section}>
+                <section className={classes.Section} id="work">
                     <div className={classes.SectionIntro}>
-                        <img src={andrePortrait} alt="Andre Glegg" className={classes.Portrait} />
                         <div>
                             <p className={classes.Eyebrow}>Background</p>
                             <h2>Self-taught, practical, and a little stubborn about making things feel good.</h2>
@@ -682,10 +778,16 @@ class Home extends Component {
                         ))}
                     </div>
 
-                    <div className={classes.Timeline}>
-                        {timeline.map(item => (
-                            <p key={item}>{item}</p>
-                        ))}
+                    <div className={classes.Experience}>
+                        <p className={classes.ExperienceLabel}>Where I have worked</p>
+                        <dl>
+                            {experience.map(role => (
+                                <div key={role.org}>
+                                    <dt>{role.org}</dt>
+                                    <dd>{role.work}</dd>
+                                </div>
+                            ))}
+                        </dl>
                     </div>
                 </section>
 
@@ -859,15 +961,84 @@ class Home extends Component {
                     </div>
                 </section>
 
-                <footer className={classes.Footer}>
-                    <span>Full site coming soon.</span>
-                    <div>
-                        <a href={githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
-                        <a href={linkedInUrl} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        <a href={endlessDescentSiteUrl} target="_blank" rel="noopener noreferrer">Endless Descent</a>
-                        <a href={appStoreUrl} target="_blank" rel="noopener noreferrer">LastCoil</a>
-                        <a href={toolsSiteUrl} target="_blank" rel="noopener noreferrer">Tools</a>
+                {postCount > 0 && (
+                    <section className={classes.Writing} id="writing">
+                        <div className={classes.WritingInner}>
+                            <div className={classes.WritingIntro}>
+                                <div>
+                                    <p className={classes.Eyebrow}>Writing</p>
+                                    <h2>Notes on building software with language models.</h2>
+                                </div>
+                                <p>
+                                    Mostly what I learn the hard way — where agents actually break,
+                                    why tool design outranks prompt wording, and what happens when
+                                    you run models on your own hardware.
+                                </p>
+                            </div>
+
+                            <ol className={classes.PostList}>
+                                {posts.map(post => (
+                                    <li key={post.url}>
+                                        <a href={post.url} {...external}>
+                                            <time className={classes.PostDate} dateTime={post.published}>
+                                                {post.label}
+                                            </time>
+                                            <div className={classes.PostBody}>
+                                                <h3>{post.title}</h3>
+                                                {post.summary && <p>{post.summary}</p>}
+                                                {post.tags.length > 0 && (
+                                                    <div className={classes.PostTags}>
+                                                        {post.tags.map(tag => (
+                                                            <span key={tag}>{tag.replace(/-/g, ' ')}</span>
+                                                        ))}
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <span className={classes.PostGo} aria-hidden="true">→</span>
+                                        </a>
+                                    </li>
+                                ))}
+                            </ol>
+
+                            <a className={classes.WritingMore} href={mediumUrl} {...external}>
+                                <FaIcon.FaMedium />
+                                Read everything on Medium
+                            </a>
+                        </div>
+                    </section>
+                )}
+
+                <footer className={classes.Footer} id="contact">
+                    <div className={classes.FooterInner}>
+                        <div className={classes.FooterLead}>
+                            <p className={classes.Eyebrow}>Get in touch</p>
+                            <h2>Open to interesting work.</h2>
+                            <p>
+                                Best reached by email. I read everything and reply to anything
+                                that is not a template.
+                            </p>
+                            <a className={classes.FooterMail} href={`mailto:${email}`}>
+                                <FaIcon.FaEnvelope />
+                                {email}
+                            </a>
+                        </div>
+
+                        <div className={classes.FooterLinks}>
+                            <div>
+                                <p className={classes.FooterHeading}>Elsewhere</p>
+                                <a href={githubUrl} {...external}>GitHub</a>
+                                <a href={linkedInUrl} {...external}>LinkedIn</a>
+                                <a href={mediumUrl} {...external}>Medium</a>
+                            </div>
+                            <div>
+                                <p className={classes.FooterHeading}>Projects</p>
+                                <a href={endlessDescentSiteUrl} {...external}>Endless Descent</a>
+                                <a href={appStoreUrl} {...external}>LastCoil</a>
+                                <a href={toolsSiteUrl} {...external}>Tools</a>
+                            </div>
+                        </div>
                     </div>
+                    <p className={classes.FooterFine}>Built and hosted by me · Oslo, Norway</p>
                 </footer>
             </main>
         );
