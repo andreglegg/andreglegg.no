@@ -5,6 +5,7 @@ import * as FaIcon from 'react-icons/lib/fa';
 // Refreshed from Medium by scripts/fetch-writing.js on every build.
 import writing from '../../data/writing.json';
 
+import andrePortrait from '../../assets/images/andre-portrait.jpg';
 import lastcoilIcon from '../../assets/images/placeholder/lastcoil-icon.jpg';
 import lastcoilGameplay from '../../assets/images/placeholder/lastcoil-gameplay.png';
 import endlessDescentLogo from '../../assets/images/placeholder/endless-descent-logo.jpg';
@@ -78,6 +79,7 @@ const classNames = [
     'HeroActions',
     'Section',
     'SectionIntro',
+    'Portrait',
     'Eyebrow',
     'FocusGrid',
     'FocusItem',
@@ -756,6 +758,14 @@ class Home extends Component {
 
                 <section className={classes.Section} id="work">
                     <div className={classes.SectionIntro}>
+                        <img
+                            src={andrePortrait}
+                            alt="André Glegg"
+                            className={classes.Portrait}
+                            width="640"
+                            height="640"
+                            loading="lazy"
+                        />
                         <div>
                             <p className={classes.Eyebrow}>Background</p>
                             <h2>Self-taught, practical, and a little stubborn about making things feel good.</h2>

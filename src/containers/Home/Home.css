@@ -1270,3 +1270,34 @@
         gap: 4px;
     }
 }
+
+/* --- Portrait ------------------------------------------------------------- */
+/* Sized as an editorial portrait rather than an avatar chip: this is the only
+   photograph of a person on the page, so it earns the room. */
+.SectionIntro {
+    grid-template-columns: 216px minmax(0, 780px);
+    gap: 34px;
+    align-items: center;
+}
+.Portrait {
+    width: 216px;
+    height: 216px;
+    object-fit: cover;
+    object-position: 50% 32%;
+    border-radius: 12px;
+    border: 1px solid rgba(24, 32, 31, 0.14);
+    background: #101817;
+    box-shadow: 0 18px 44px rgba(24, 32, 31, 0.14);
+}
+
+@media (max-width: 860px) {
+    .SectionIntro {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        align-items: start;
+    }
+    .Portrait {
+        width: 148px;
+        height: 148px;
+    }
+}
