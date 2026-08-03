@@ -15,6 +15,8 @@ const endlessDescentGooglePlayUrl = 'https://play.google.com/store/apps/details?
 const endlessDescentSiteUrl = 'https://endlessdescent.andreglegg.no/';
 const githubUrl = 'https://github.com/andreglegg';
 const linkedInUrl = 'https://www.linkedin.com/in/andre-glegg-060a3164';
+const toolsSiteUrl = 'https://tools.andreglegg.no/';
+const treegenConnectCommand = 'claude mcp add --transport http treegen https://mcp.andreglegg.no/treegen';
 const classNames = [
     'Home',
     'Hero',
@@ -50,6 +52,23 @@ const classNames = [
     'TagList',
     'ProjectLink',
     'ComingSoonLink',
+    'Tools',
+    'ToolsInner',
+    'ToolsIntro',
+    'ToolsGrid',
+    'ToolCard',
+    'ToolCardHead',
+    'ToolIcon',
+    'ToolBadge',
+    'ToolBadgePrivate',
+    'ToolBody',
+    'ToolActions',
+    'Connect',
+    'ConnectLabel',
+    'ConnectRow',
+    'ConnectCommand',
+    'CopyButton',
+    'ToolNote',
     'Footer'
 ];
 const classes = classNames.reduce((acc, name) => {
@@ -103,6 +122,100 @@ const endlessDescentTags = [
     'Leaderboards',
     'Mobile arcade'
 ];
+
+const tools = [
+    {
+        id: 'treegen',
+        icon: <FaIcon.FaCubes />,
+        name: 'treegen',
+        status: 'Open to everyone',
+        badge: 'Public',
+        summary: 'Generates stylized low-poly trees as game-ready GLB or OBJ. Deterministic, so a seed always rebuilds the same tree, with triangle budgets from roughly 1k to 7k.',
+        tags: ['MCP server', 'Three.js', 'GLB / OBJ', 'Procedural', 'Node.js'],
+        links: [
+            { href: toolsSiteUrl, label: 'Try it in the browser', icon: <FaIcon.FaExternalLink /> },
+            { href: 'https://github.com/andreglegg/treegen', label: 'Source', icon: <FaIcon.FaGithub /> }
+        ]
+    },
+    {
+        id: 'assetcut',
+        icon: <FaIcon.FaCut />,
+        name: 'assetcut',
+        status: 'Private for now',
+        badge: 'Private',
+        summary: 'Cuts backgrounds off game sprites and exports real transparent PNGs, with slicing and atlas support. It takes arbitrary image uploads, so it stays behind an auth gate rather than running strangers’ files on my hardware.',
+        tags: ['Python', 'OpenCV', 'Sprite atlas', 'Alpha cutout'],
+        links: [
+            { href: 'https://github.com/andreglegg/assetcut', label: 'Source', icon: <FaIcon.FaGithub /> }
+        ]
+    }
+];
+
+// Small clipboard helper. execCommand is the fallback because this site still
+// serves visitors on browsers without the async clipboard API.
+class CopyCommand extends Component {
+    state = { copied: false };
+
+    componentWillUnmount() {
+        if (this.timer) {
+            window.clearTimeout(this.timer);
+        }
+    }
+
+    flash = () => {
+        this.setState({ copied: true });
+        this.timer = window.setTimeout(() => this.setState({ copied: false }), 1800);
+    };
+
+    copy = () => {
+        const { value } = this.props;
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(value).then(this.flash, this.legacyCopy);
+            return;
+        }
+
+        this.legacyCopy();
+    };
+
+    legacyCopy = () => {
+        const field = document.createElement('textarea');
+        field.value = this.props.value;
+        field.setAttribute('readonly', '');
+        field.style.position = 'absolute';
+        field.style.left = '-9999px';
+        document.body.appendChild(field);
+        field.select();
+
+        try {
+            document.execCommand('copy');
+            this.flash();
+        } catch (error) {
+            // Clipboard is unavailable; the command stays selectable on screen.
+        }
+
+        document.body.removeChild(field);
+    };
+
+    render() {
+        const { copied } = this.state;
+
+        return (
+            <div className={classes.ConnectRow}>
+                <code className={classes.ConnectCommand}>{this.props.value}</code>
+                <button
+                    type="button"
+                    className={classes.CopyButton}
+                    onClick={this.copy}
+                    aria-label="Copy the connect command"
+                >
+                    {copied ? <FaIcon.FaCheck /> : <FaIcon.FaClipboard />}
+                    {copied ? 'Copied' : 'Copy'}
+                </button>
+            </div>
+        );
+    }
+}
 
 class BackgroundMiniGame extends Component {
     componentDidMount() {
@@ -528,6 +641,10 @@ class Home extends Component {
                                 <FaIcon.FaGamepad />
                                 See the games
                             </a>
+                            <a href="#tools">
+                                <FaIcon.FaTerminal />
+                                Use my tools
+                            </a>
                             <a href={githubUrl} target="_blank" rel="noopener noreferrer">
                                 <FaIcon.FaGithub />
                                 GitHub
@@ -663,6 +780,85 @@ class Home extends Component {
                     </div>
                 </section>
 
+                <section className={classes.Tools} id="tools">
+                    <div className={classes.ToolsInner}>
+                        <div className={classes.ToolsIntro}>
+                            <div>
+                                <p className={classes.Eyebrow}>Tools</p>
+                                <h2>Tools I built for my own work, hosted so anyone can use them.</h2>
+                            </div>
+                            <p>
+                                These run as remote MCP servers, so an AI coding client like Claude or
+                                Codex can call them straight over HTTPS with nothing to install. I wrote
+                                the generators, the protocol layer, and the self-hosted infrastructure
+                                they run on.
+                            </p>
+                        </div>
+
+                        <div className={classes.Connect}>
+                            <p className={classes.ConnectLabel}>
+                                <FaIcon.FaTerminal />
+                                Connect treegen in one command
+                            </p>
+                            <CopyCommand value={treegenConnectCommand} />
+                            <p className={classes.ToolNote}>
+                                No key needed. Generated meshes come back as download links, so a
+                                600&nbsp;KB file never lands in the model's context. The playground at{' '}
+                                <a href={toolsSiteUrl} target="_blank" rel="noopener noreferrer">
+                                    tools.andreglegg.no
+                                </a>{' '}
+                                runs entirely in your browser, so you can try it without connecting
+                                anything.
+                            </p>
+                        </div>
+
+                        <div className={classes.ToolsGrid}>
+                            {tools.map(tool => (
+                                <article className={classes.ToolCard} key={tool.id} id={tool.id}>
+                                    <div className={classes.ToolCardHead}>
+                                        <span className={classes.ToolIcon}>{tool.icon}</span>
+                                        <div>
+                                            <h3>{tool.name}</h3>
+                                            <p>{tool.status}</p>
+                                        </div>
+                                        <span
+                                            className={
+                                                tool.badge === 'Private'
+                                                    ? `${classes.ToolBadge} ${classes.ToolBadgePrivate}`
+                                                    : classes.ToolBadge
+                                            }
+                                        >
+                                            {tool.badge}
+                                        </span>
+                                    </div>
+
+                                    <div className={classes.ToolBody}>
+                                        <p>{tool.summary}</p>
+                                        <div className={classes.TagList}>
+                                            {tool.tags.map(tag => <span key={tag}>{tag}</span>)}
+                                        </div>
+                                    </div>
+
+                                    <div className={classes.ToolActions}>
+                                        {tool.links.map(link => (
+                                            <a
+                                                className={classes.ProjectLink}
+                                                href={link.href}
+                                                key={link.label}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                {link.icon}
+                                                {link.label}
+                                            </a>
+                                        ))}
+                                    </div>
+                                </article>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
                 <footer className={classes.Footer}>
                     <span>Full site coming soon.</span>
                     <div>
@@ -670,6 +866,7 @@ class Home extends Component {
                         <a href={linkedInUrl} target="_blank" rel="noopener noreferrer">LinkedIn</a>
                         <a href={endlessDescentSiteUrl} target="_blank" rel="noopener noreferrer">Endless Descent</a>
                         <a href={appStoreUrl} target="_blank" rel="noopener noreferrer">LastCoil</a>
+                        <a href={toolsSiteUrl} target="_blank" rel="noopener noreferrer">Tools</a>
                     </div>
                 </footer>
             </main>
