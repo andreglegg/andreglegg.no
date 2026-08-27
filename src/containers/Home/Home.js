@@ -19,8 +19,11 @@ const endlessDescentSiteUrl = 'https://endlessdescent.andreglegg.no/';
 const githubUrl = 'https://github.com/andreglegg';
 const linkedInUrl = 'https://www.linkedin.com/in/andre-glegg-060a3164';
 const toolsSiteUrl = 'https://tools.andreglegg.no/';
+const forgeGitHubUrl = 'https://github.com/andreglegg/forge';
+const forgeNpmUrl = 'https://www.npmjs.com/package/@aglegg/forge-harness';
 const mediumUrl = 'https://medium.com/@andreglegg';
 const email = 'andreglegg@me.com';
+const forgeInstallCommand = 'npm install --global @aglegg/forge-harness';
 const treegenConnectCommand = 'claude mcp add --transport http treegen https://mcp.andreglegg.no/treegen';
 
 const external = { target: '_blank', rel: 'noopener noreferrer' };
@@ -32,6 +35,7 @@ const postCount = posts.length;
 // each row has to lead somewhere real. The post count comes from the feed data
 // so it cannot go stale when a new article lands.
 const liveWork = [
+    { name: 'Forge', meta: 'Public alpha · npm', href: forgeNpmUrl, external: true },
     { name: 'Endless Descent', meta: 'iOS · Android', href: endlessDescentAppStoreUrl, external: true },
     { name: 'LastCoil', meta: 'iOS · Android', href: appStoreUrl, external: true },
     { name: 'treegen', meta: 'Public MCP server', href: toolsSiteUrl, external: true },
@@ -115,6 +119,8 @@ const classNames = [
     'ToolBody',
     'ToolActions',
     'Connect',
+    'ConnectGroup',
+    'ConnectGroupSecondary',
     'ConnectLabel',
     'ConnectRow',
     'ConnectCommand',
@@ -140,8 +146,8 @@ const focusAreas = [
     },
     {
         icon: <FaIcon.FaCode />,
-        title: 'Full-stack delivery',
-        text: 'I can handle the boring important parts too: APIs, data, CI/CD, servers, hiring, mentoring, and getting features out the door.'
+        title: 'Developer tooling & full-stack delivery',
+        text: 'Forge sits here: TypeScript agent architecture, Git-aware tooling, safety boundaries, benchmarks, APIs, CI/CD, servers, mentoring, and getting useful software out the door.'
     }
 ];
 
@@ -276,7 +282,7 @@ class CopyCommand extends Component {
                     type="button"
                     className={classes.CopyButton}
                     onClick={this.copy}
-                    aria-label="Copy the connect command"
+                    aria-label={this.props.label || 'Copy command'}
                 >
                     {copied ? <FaIcon.FaCheck /> : <FaIcon.FaClipboard />}
                     {copied ? 'Copied' : 'Copy'}
@@ -711,8 +717,8 @@ class Home extends Component {
                         <p className={classes.Kicker}>Full-stack &amp; 3D engineer · Oslo</p>
                         <h1>André Glegg</h1>
                         <p className={classes.Lead}>
-                            Jamaican-born, Oslo-based. I build 3D tools for industrial data,
-                            realtime systems, and mobile games — and I ship them.
+                            Jamaican-born, Oslo-based. I build 3D products for industrial data,
+                            developer tools, realtime systems, and mobile games — and I ship them.
                         </p>
 
                         {/* The manifest: what is actually running right now, doubling as
@@ -897,31 +903,56 @@ class Home extends Component {
                         <div className={classes.ToolsIntro}>
                             <div>
                                 <p className={classes.Eyebrow}>Tools</p>
-                                <h2>Tools I built for my own work, hosted so anyone can use them.</h2>
+                                <h2>Developer tools I build to remove friction from real work.</h2>
                             </div>
                             <p>
-                                These run as remote MCP servers, so an AI coding client like Claude or
-                                Codex can call them straight over HTTPS with nothing to install. I wrote
-                                the generators, the protocol layer, and the self-hosted infrastructure
-                                they run on.
+                                Forge runs locally as a coding-agent harness; treegen and assetcut solve
+                                narrower asset problems. The common thread is bounded behavior, inspectable
+                                tooling, and interfaces that are useful outside a demo.
                             </p>
                         </div>
 
                         <div className={classes.Connect}>
-                            <p className={classes.ConnectLabel}>
-                                <FaIcon.FaTerminal />
-                                Connect treegen in one command
-                            </p>
-                            <CopyCommand value={treegenConnectCommand} />
-                            <p className={classes.ToolNote}>
-                                No key needed. Generated meshes come back as download links, so a
-                                600&nbsp;KB file never lands in the model's context. The playground at{' '}
-                                <a href={toolsSiteUrl} target="_blank" rel="noopener noreferrer">
-                                    tools.andreglegg.no
-                                </a>{' '}
-                                runs entirely in your browser, so you can try it without connecting
-                                anything.
-                            </p>
+                            <div className={classes.ConnectGroup} id="forge">
+                                <p className={classes.ConnectLabel}>
+                                    <FaIcon.FaTerminal />
+                                    Forge · public alpha
+                                </p>
+                                <CopyCommand value={forgeInstallCommand} label="Copy the Forge install command" />
+                                <p className={classes.ToolNote}>
+                                    A local-first coding-agent harness for local and small language models.
+                                    Forge adds Git-aware repository navigation, guarded edits, approval,
+                                    verification, traces, replay, undo, and isolated worktree runs. The
+                                    pinned Aider Polyglot run reached 60.00% (135/225) on August 4, 2026.
+                                </p>
+                                <div className={classes.ToolActions}>
+                                    <a className={classes.ProjectLink} href={forgeGitHubUrl} {...external}>
+                                        <FaIcon.FaGithub />
+                                        Source
+                                    </a>
+                                    <a className={classes.ProjectLink} href={forgeNpmUrl} {...external}>
+                                        <FaIcon.FaCube />
+                                        npm package
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div className={`${classes.ConnectGroup} ${classes.ConnectGroupSecondary}`}>
+                                <p className={classes.ConnectLabel}>
+                                    <FaIcon.FaTerminal />
+                                    Connect treegen in one command
+                                </p>
+                                <CopyCommand value={treegenConnectCommand} label="Copy the treegen connect command" />
+                                <p className={classes.ToolNote}>
+                                    No key needed. Generated meshes come back as download links, so a
+                                    600&nbsp;KB file never lands in the model's context. The playground at{' '}
+                                    <a href={toolsSiteUrl} target="_blank" rel="noopener noreferrer">
+                                        tools.andreglegg.no
+                                    </a>{' '}
+                                    runs entirely in your browser, so you can try it without connecting
+                                    anything.
+                                </p>
+                            </div>
                         </div>
 
                         <div className={classes.ToolsGrid}>
@@ -1042,6 +1073,7 @@ class Home extends Component {
                             </div>
                             <div>
                                 <p className={classes.FooterHeading}>Projects</p>
+                                <a href={forgeGitHubUrl} {...external}>Forge</a>
                                 <a href={endlessDescentSiteUrl} {...external}>Endless Descent</a>
                                 <a href={appStoreUrl} {...external}>LastCoil</a>
                                 <a href={toolsSiteUrl} {...external}>Tools</a>
