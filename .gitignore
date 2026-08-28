@@ -8,6 +8,7 @@
 
 # production
 /build
+/.codex-bridge
 
 # misc
 .DS_Store
