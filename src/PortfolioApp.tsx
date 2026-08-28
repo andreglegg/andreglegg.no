@@ -19,9 +19,6 @@ import {
 } from 'lucide-react';
 import writingData from './data/writing.json';
 import portrait from './assets/images/andre-portrait.jpg';
-import endlessArt from './assets/images/placeholder/endless-descent-landscape.jpg';
-import lastcoilGameplay from './assets/images/placeholder/lastcoil-gameplay.png';
-import lastcoilIcon from './assets/images/placeholder/lastcoil-icon.jpg';
 import { experience, forgeInstallCommand, links, moreWork, skillGroups } from './portfolio-content';
 
 type WritingPost = {
@@ -166,15 +163,50 @@ function ForgeVisual() {
 
 function AizeVisual() {
   return (
-    <div className="aize-visual" aria-label="Aize industrial 3D engineering work">
-      <div className="aize-grid" aria-hidden="true" />
-      <div className="aize-model" aria-hidden="true">
-        <span />
-        <span />
-        <span />
+    <div className="aize-product-visual">
+      <img
+        className="aize-product-shot"
+        src="/assets/aize-product.jpg"
+        alt="Published Aize digital-twin product interface showing an industrial 3D model and equipment data"
+      />
+      <div className="aize-brand-panel">
+        <img src="/assets/aize-logo-inverted.svg" alt="Aize" />
+        <span>Industrial digital twin</span>
       </div>
-      <img src="/assets/aize-icon.svg" alt="Aize" />
-      <p>Industrial 3D systems</p>
+    </div>
+  );
+}
+
+function EndlessDescentVisual() {
+  return (
+    <div className="game-showcase endless-showcase">
+      <div className="game-showcase-glow" aria-hidden="true" />
+      <img className="game-phone game-phone-back" src="/assets/endless-descent-gameplay-2.png" alt="" />
+      <img
+        className="game-phone game-phone-front"
+        src="/assets/endless-descent-gameplay.png"
+        alt="Endless Descent App Store gameplay screenshot"
+      />
+      <div className="game-showcase-badge">
+        <img src="/assets/endless-descent-icon.jpg" alt="" />
+        <span><strong>Endless Descent</strong><small>Shipped · iOS & Android</small></span>
+      </div>
+    </div>
+  );
+}
+
+function LastCoilVisual() {
+  return (
+    <div className="lastcoil-showcase">
+      <img
+        className="lastcoil-shot"
+        src="/assets/lastcoil-gameplay.png"
+        alt="LastCoil App Store gameplay screenshot showing a live multiplayer snake arena"
+      />
+      <div className="lastcoil-badge">
+        <img src="/assets/lastcoil-icon.jpg" alt="" />
+        <span><strong>LastCoil</strong><small>Real-time multiplayer · iOS & Android</small></span>
+      </div>
     </div>
   );
 }
@@ -314,9 +346,16 @@ function PortfolioApp() {
               </div>
 
               <div className="hero-signals" aria-label="Career highlights">
-                <div><strong>15+</strong><span>years building software</span></div>
-                <div><strong>4-person</strong><span>development team at Fjong</span></div>
-                <div><strong>2</strong><span>mobile games shipped</span></div>
+                <div><strong>15+</strong><span>years building production software</span></div>
+                <div><strong>4-person</strong><span>development team led at Fjong</span></div>
+                <div><strong>2</strong><span>mobile games shipped to both stores</span></div>
+              </div>
+
+              <div className="career-proof" aria-label="Selected professional experience">
+                <span>Professional experience</span>
+                <img src="/assets/aize-logo-inverted.svg" alt="Aize" />
+                <span className="career-proof-divider" aria-hidden="true" />
+                <strong>Fjong Norge</strong>
               </div>
             </div>
 
@@ -420,8 +459,9 @@ function PortfolioApp() {
               title="Endless Descent"
               role="A shipped one-thumb mobile arcade game built with Godot."
               description="Designed, built and released the game across both mobile stores, including movement, progression, leaderboards, platform integrations and the production work required to ship and maintain it."
+              proof="Released on both the App Store and Google Play, with gameplay, progression, leaderboards and platform integrations built and shipped end to end."
               tags={['Godot', 'iOS', 'Android', 'Leaderboards']}
-              visual={<img className="cover-image" src={endlessArt} alt="Endless Descent gameplay key art" />}
+              visual={<EndlessDescentVisual />}
               actions={[
                 { label: 'App Store', href: links.endlessIos, external: true },
                 { label: 'Google Play', href: links.endlessAndroid, external: true },
@@ -439,10 +479,10 @@ function PortfolioApp() {
 
           <div className="more-work-grid">
             {moreWork.map((project) => (
-              <article className="more-card" key={project.name}>
+              <article className={`more-card ${project.name === 'LastCoil' ? 'more-card-game' : ''}`} key={project.name}>
                 <div className="more-card-visual">
                   {project.name === 'LastCoil' ? (
-                    <img src={lastcoilGameplay} alt="LastCoil gameplay" />
+                    <LastCoilVisual />
                   ) : (
                     <div className="treegen-mark" aria-hidden="true"><TreePine /></div>
                   )}
@@ -450,7 +490,7 @@ function PortfolioApp() {
                 <div className="more-card-content">
                   <p className="eyebrow">{project.eyebrow}</p>
                   <div className="more-title-row">
-                    {project.name === 'LastCoil' && <img src={lastcoilIcon} alt="" />}
+                    {project.name === 'LastCoil' && <img src="/assets/lastcoil-icon.jpg" alt="" />}
                     <h3>{project.name}</h3>
                   </div>
                   <p>{project.description}</p>

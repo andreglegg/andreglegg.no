@@ -30,12 +30,24 @@ describe('portfolio', () => {
     );
   });
 
-  it('uses the verified experience dates and contact email', () => {
+  it('uses the verified experience dates, product evidence and contact email', () => {
     render(<PortfolioApp />);
 
     expect(screen.getByText('Aug 2021 — Jun 2024')).toBeInTheDocument();
     expect(screen.getByText('Jun 2018 — Aug 2021')).toBeInTheDocument();
     expect(screen.getByText('Jul 2024 — Present')).toBeInTheDocument();
+    expect(screen.getByRole('img', { name: /published Aize digital-twin product interface/i })).toHaveAttribute(
+      'src',
+      '/assets/aize-product.jpg',
+    );
+    expect(screen.getByRole('img', { name: /Endless Descent App Store gameplay screenshot/i })).toHaveAttribute(
+      'src',
+      '/assets/endless-descent-gameplay.png',
+    );
+    expect(screen.getByRole('img', { name: /LastCoil App Store gameplay screenshot/i })).toHaveAttribute(
+      'src',
+      '/assets/lastcoil-gameplay.png',
+    );
     expect(screen.getByRole('link', { name: /andreglegg@me.com/i })).toHaveAttribute(
       'href',
       'mailto:andreglegg@me.com',

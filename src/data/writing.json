@@ -1,6 +1,18 @@
 {
     "posts": [
         {
+            "title": "I Built a Coding Agent for Small Models. Here’s What I Learned.",
+            "url": "https://medium.com/@andreglegg/i-built-a-coding-agent-for-small-models-heres-what-i-learned-84afcb5851bd",
+            "published": "2026-08-28",
+            "label": "Aug 2026",
+            "tags": [
+                "software-engineering",
+                "programming",
+                "open-source"
+            ],
+            "summary": "A coding model isn’t a coding agent"
+        },
+        {
             "title": "The Agent Loop Is Not a Workflow",
             "url": "https://medium.com/@andreglegg/the-agent-loop-is-not-a-workflow-86cd81294f4c",
             "published": "2026-07-29",
@@ -23,18 +35,6 @@
                 "software-engineering"
             ],
             "summary": "A debugging experiment changed how I think about building LLM software"
-        },
-        {
-            "title": "Home Computers Are Becoming Tiny AI Datacenters",
-            "url": "https://medium.com/@andreglegg/home-computers-are-becoming-tiny-ai-datacenters-8e7d737cdf80",
-            "published": "2026-07-21",
-            "label": "Jul 2026",
-            "tags": [
-                "artificial-intelligence",
-                "gpu-computing",
-                "large-language-models"
-            ],
-            "summary": "Most of the computing power in our homes sits idle."
         }
     ]
 }
