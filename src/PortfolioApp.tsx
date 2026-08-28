@@ -166,8 +166,8 @@ function AizeVisual() {
     <div className="aize-product-visual">
       <img
         className="aize-product-shot"
-        src="/assets/aize-product.jpg"
-        alt="Published Aize digital-twin product interface showing an industrial 3D model and equipment data"
+        src="/assets/aize-product-visualise.jpg"
+        alt="Published Aize digital-twin interface showing an industrial 3D model with clipping and model-navigation tools"
       />
       <div className="aize-brand-panel">
         <img src="/assets/aize-logo-inverted.svg" alt="Aize" />
@@ -359,45 +359,47 @@ function PortfolioApp() {
               </div>
             </div>
 
-            <aside className="current-panel" aria-label="Current work">
-              <div className="panel-label"><span />Current work</div>
-              <ol>
-                {currentWork.map((item) => (
-                  <li key={item.name}>
-                    <a href={item.href}>
-                      <span className="current-icon">{item.icon}</span>
-                      <span className="current-copy">
-                        <strong>{item.name}</strong>
-                        <span>{item.description}</span>
-                        <small>{item.meta}</small>
-                      </span>
-                      <ArrowRight size={16} aria-hidden="true" />
-                    </a>
-                  </li>
-                ))}
-              </ol>
-            </aside>
+            <div className="hero-side">
+              <aside className="current-panel" aria-label="Current work">
+                <div className="panel-label"><span />Current work</div>
+                <ol>
+                  {currentWork.map((item) => (
+                    <li key={item.name}>
+                      <a href={item.href}>
+                        <span className="current-icon">{item.icon}</span>
+                        <span className="current-copy">
+                          <strong>{item.name}</strong>
+                          <span>{item.description}</span>
+                          <small>{item.meta}</small>
+                        </span>
+                        <ArrowRight size={16} aria-hidden="true" />
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </aside>
 
-            <aside className="forge-proof-card" aria-label="Forge benchmark evidence">
-              <div className="forge-proof-title">
-                <div>
-                  <p className="eyebrow">Forge · Public alpha</p>
-                  <h2>Coding-agent harness for local models.</h2>
+              <aside className="forge-proof-card" aria-label="Forge benchmark evidence">
+                <div className="forge-proof-title">
+                  <div>
+                    <p className="eyebrow">Forge · Public alpha</p>
+                    <h2>Coding-agent harness for local models.</h2>
+                  </div>
+                  <img src="/assets/forge-icon.png" alt="Forge icon" />
                 </div>
-                <img src="/assets/forge-icon.png" alt="Forge icon" />
-              </div>
-              <CopyCommand />
-              <div className="metric-grid">
-                <div><strong>60.00%</strong><span>Aider Polyglot</span></div>
-                <div><strong>135 / 225</strong><span>official cases</span></div>
-                <div><strong>14 / 14</strong><span>local multi-file suite</span></div>
-              </div>
-              <p className="metric-note">Measured Aug 4, 2026. Public benchmark evidence is kept in the Forge repository.</p>
-              <div className="forge-links">
-                <ExternalTextLink href={links.forgeGithub}><Code2 size={16} aria-hidden="true" />GitHub</ExternalTextLink>
-                <ExternalTextLink href={links.forgeNpm}><Package size={16} aria-hidden="true" />npm</ExternalTextLink>
-              </div>
-            </aside>
+                <CopyCommand />
+                <div className="metric-grid">
+                  <div><strong>60.00%</strong><span>Aider Polyglot</span></div>
+                  <div><strong>135 / 225</strong><span>official cases</span></div>
+                  <div><strong>14 / 14</strong><span>local multi-file suite</span></div>
+                </div>
+                <p className="metric-note">Measured Aug 4, 2026. Public benchmark evidence is kept in the Forge repository.</p>
+                <div className="forge-links">
+                  <ExternalTextLink href={links.forgeGithub}><Code2 size={16} aria-hidden="true" />GitHub</ExternalTextLink>
+                  <ExternalTextLink href={links.forgeNpm}><Package size={16} aria-hidden="true" />npm</ExternalTextLink>
+                </div>
+              </aside>
+            </div>
           </div>
         </section>
 

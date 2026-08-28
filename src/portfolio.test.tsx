@@ -36,9 +36,9 @@ describe('portfolio', () => {
     expect(screen.getByText('Aug 2021 — Jun 2024')).toBeInTheDocument();
     expect(screen.getByText('Jun 2018 — Aug 2021')).toBeInTheDocument();
     expect(screen.getByText('Jul 2024 — Present')).toBeInTheDocument();
-    expect(screen.getByRole('img', { name: /published Aize digital-twin product interface/i })).toHaveAttribute(
+    expect(screen.getByRole('img', { name: /published Aize digital-twin interface/i })).toHaveAttribute(
       'src',
-      '/assets/aize-product.jpg',
+      '/assets/aize-product-visualise.jpg',
     );
     expect(screen.getByRole('img', { name: /Endless Descent App Store gameplay screenshot/i })).toHaveAttribute(
       'src',
